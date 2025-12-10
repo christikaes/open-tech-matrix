@@ -1,0 +1,100 @@
+{
+  "Frontend Frameworks": {
+    "React": ["react", "react-*"],
+    "Vue": ["vue", "vue-*", "vuex", "pinia"],
+    "Angular": ["@angular/*"],
+    "Svelte": ["svelte", "svelte-*"]
+  },
+  "Meta-Frameworks": {
+    "Next.js": ["next"]
+  },
+  "Component Libraries": {
+    "Material-UI": ["@mui/*", "@emotion/react", "@emotion/styled"],
+    "Ant Design": ["antd", "@ant-design/*"],
+    "Chakra UI": ["@chakra-ui/*"],
+    "Bootstrap": ["bootstrap", "react-bootstrap"]
+  },
+  "State Management": {
+    "Redux": ["redux", "react-redux", "@reduxjs/toolkit", "redux-*"],
+    "MobX": ["mobx", "mobx-*"],
+    "Zustand": ["zustand"],
+    "Recoil": ["recoil"]
+  },
+  "Build Tools": {
+    "Webpack": ["webpack", "webpack-*"],
+    "Vite": ["vite", "@vitejs/*"],
+    "Rollup": ["rollup", "@rollup/*", "rollup-plugin-*"],
+    "Parcel": ["parcel", "parcel-bundler"],
+    "esbuild": ["esbuild"],
+    "Babel": ["babel", "@babel/*", "babel-*"]
+  },
+  "Languages": {
+    "TypeScript": ["typescript", "ts-node", "ts-loader", "tsx", "@typescript*", "typescript-*"]
+  },
+  "Unit Testing": {
+    "Jest": ["jest", "@jest/*", "jest-environment-jsdom", "ts-jest", "babel-jest"],
+    "Vitest": ["vitest", "@vitest/*"],
+    "Mocha": ["mocha", "chai", "chai-http", "mocha-*"],
+    "Jasmine": ["jasmine", "jasmine-core"],
+    "Testing Library": ["@testing-library/*"],
+    "Sinon": ["sinon", "sinon-*"]
+  },
+  "E2E Testing": {
+    "Cypress": ["cypress"],
+    "Playwright": ["@playwright/*", "playwright"]
+  },
+  "Linting": {
+    "ESLint": ["eslint", "eslint-config-*", "eslint-plugin-*"],
+    "Stylelint": ["stylelint"]
+  },
+  "Formatting": {
+    "Prettier": ["prettier"]
+  },
+  "Styling": {
+    "Tailwind CSS": ["tailwindcss", "@tailwindcss/*"],
+    "Sass": ["sass", "node-sass", "sass-loader"],
+    "PostCSS": ["postcss", "autoprefixer", "postcss-loader"],
+    "Styled Components": ["styled-components"]
+  },
+  "HTTP/API": {
+    "Axios": ["axios"],
+    "GraphQL": ["graphql", "@apollo/*", "apollo-server", "graphql-request"],
+    "tRPC": ["@trpc/*"],
+    "React Query": ["@tanstack/react-query", "react-query"]
+  },
+  "REST Servers": {
+    "Express": ["express", "express-validator"],
+    "Fastify": ["fastify"],
+    "Koa": ["koa", "koa-router"],
+    "NestJS": ["@nestjs/*"]
+  },
+  "Database & ORM": {
+    "Prisma": ["prisma", "@prisma/*"],
+    "TypeORM": ["typeorm"],
+    "Sequelize": ["sequelize"],
+    "Mongoose": ["mongoose"],
+    "Drizzle ORM": ["drizzle-orm"]
+  },
+  "Utilities": {
+    "Lodash": ["lodash", "lodash-es"],
+    "Ramda": ["ramda"],
+    "Day.js": ["dayjs"],
+    "Moment.js": ["moment"],
+    "date-fns": ["date-fns"],
+    "Zod": ["zod"],
+    "Yup": ["yup"]
+  },
+  "Animation": {
+    "Framer Motion": ["framer-motion"],
+    "React Spring": ["react-spring"],
+    "GSAP": ["gsap"]
+  },
+  "Forms": {
+    "React Hook Form": ["react-hook-form"],
+    "Formik": ["formik"]
+  },
+  "Routing": {
+    "React Router": ["react-router", "react-router-dom"],
+    "TanStack Router": ["@tanstack/react-router"]
+  }
+}

@@ -1,5 +1,4 @@
 import { LanguageAnalyzer } from "./types";
-import { getTechnologyName } from "./data/java";
 
 /**
  * Java analyzer - reads pom.xml, build.gradle
@@ -19,15 +18,13 @@ export const javaAnalyzer: LanguageAnalyzer = {
         // Match groupId with artifactId
         for (let i = 0; i < Math.min(groupIdMatches.length, artifactIdMatches.length); i++) {
           const fullName = `${groupIdMatches[i][1]}:${artifactIdMatches[i][1]}`;
-          const techName = getTechnologyName(fullName);
-          deps.add(techName);
+          deps.add(fullName);
         }
       } else if (filePath.includes("build.gradle")) {
         // Extract Gradle dependencies
         const dependencyMatches = content.matchAll(/['"]([a-zA-Z0-9_.-]+:[a-zA-Z0-9_.-]+)/g);
         for (const match of dependencyMatches) {
-          const techName = getTechnologyName(match[1]);
-          deps.add(techName);
+          deps.add(match[1]);
         }
       }
     } catch (error) {

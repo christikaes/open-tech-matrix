@@ -1,5 +1,4 @@
 import { LanguageAnalyzer } from "./types";
-import { getTechnologyName } from "./data/rust";
 
 /**
  * Rust analyzer - reads Cargo.toml
@@ -31,8 +30,7 @@ export const rustAnalyzer: LanguageAnalyzer = {
         if (inDependenciesSection && trimmed) {
           const match = trimmed.match(/^([a-zA-Z0-9_-]+)\s*=/);
           if (match) {
-            const techName = getTechnologyName(match[1]);
-            deps.add(techName);
+            deps.add(match[1]);
           }
         }
       }

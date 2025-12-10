@@ -1,0 +1,31 @@
+{
+  "Frameworks": {
+    "Spring Boot": ["org.springframework.boot:*"],
+    "Spring": ["org.springframework:*"]
+  },
+  "Testing": {
+    "JUnit": ["junit:junit", "org.junit.jupiter:*"],
+    "Mockito": ["org.mockito:*"],
+    "TestNG": ["org.testng:*"]
+  },
+  "Database": {
+    "Hibernate": ["org.hibernate:*"],
+    "MyBatis": ["org.mybatis:*"],
+    "JDBC": ["mysql:mysql-connector-java", "org.postgresql:postgresql"]
+  },
+  "Logging": {
+    "SLF4J": ["org.slf4j:*"],
+    "Logback": ["ch.qos.logback:*"],
+    "Log4j": ["org.apache.logging.log4j:*"]
+  },
+  "Utilities": {
+    "Apache Commons": ["org.apache.commons:*", "commons-io:*"],
+    "Guava": ["com.google.guava:*"],
+    "Jackson": ["com.fasterxml.jackson.core:*"],
+    "Gson": ["com.google.code.gson:*"]
+  },
+  "Build Tools": {
+    "Maven": ["org.apache.maven*"],
+    "Gradle": ["gradle"]
+  }
+}

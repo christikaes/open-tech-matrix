@@ -1,5 +1,4 @@
 import { LanguageAnalyzer } from "./types";
-import { getTechnologyName } from "./data/csharp";
 
 /**
  * C# analyzer - reads .csproj files
@@ -15,15 +14,13 @@ export const csharpAnalyzer: LanguageAnalyzer = {
         // Extract PackageReference from .csproj
         const packageMatches = content.matchAll(/<PackageReference\s+Include="([^"]+)"/g);
         for (const match of packageMatches) {
-          const techName = getTechnologyName(match[1]);
-          deps.add(techName);
+          deps.add(match[1]);
         }
       } else if (filePath.endsWith("packages.config")) {
         // Extract from packages.config
         const packageMatches = content.matchAll(/<package\s+id="([^"]+)"/g);
         for (const match of packageMatches) {
-          const techName = getTechnologyName(match[1]);
-          deps.add(techName);
+          deps.add(match[1]);
         }
       }
     } catch (error) {

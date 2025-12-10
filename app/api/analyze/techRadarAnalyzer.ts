@@ -3,33 +3,34 @@ import * as fs from "fs";
 import * as path from "path";
 import { execSync } from "child_process";
 import { getAnalyzer } from "./analyzers";
-import { javascriptCategoryMapping } from "./analyzers/data/javascript";
-import { pythonCategoryMapping } from "./analyzers/data/python";
-import { javaCategoryMapping } from "./analyzers/data/java";
-import { goCategoryMapping } from "./analyzers/data/go";
-import { csharpCategoryMapping } from "./analyzers/data/csharp";
-import { cppCategoryMapping } from "./analyzers/data/cpp";
-import { rustCategoryMapping } from "./analyzers/data/rust";
+import {
+  allCategoryMappings,
+  allTechnologyMappings,
+} from "./analyzers/data";
+import { getTechnologyName as getSharedTechName } from "./analyzers/data/shared";
 
 export const ADOPTION_STAGES = ["Assess", "Trial", "Adopt", "Hold", "Remove"];
 
-// Combine all category mappings
-const allCategoryMappings = {
-  ...javascriptCategoryMapping,
-  ...pythonCategoryMapping,
-  ...javaCategoryMapping,
-  ...goCategoryMapping,
-  ...csharpCategoryMapping,
-  ...cppCategoryMapping,
-  ...rustCategoryMapping,
-};
+/**
+ * Get technology name for a package across all language analyzers
+ */
+function getTechnologyNameForPackage(packageName: string): string {
+  // Skip @types packages
+  if (packageName.startsWith("@types/")) {
+    return packageName; // Return as-is, will be filtered later if needed
+  }
+  
+  // Use shared getTechnologyName with combined mappings
+  return getSharedTechName(packageName, allTechnologyMappings);
+}
 
 /**
- * Get category for a technology name
+ * Get category for a technology name (case-insensitive)
  */
 function getCategoryForTechnology(techName: string): string {
+  const techNameLower = techName.toLowerCase();
   for (const [category, technologies] of Object.entries(allCategoryMappings)) {
-    if (technologies.includes(techName)) {
+    if (technologies.some(tech => tech.toLowerCase() === techNameLower)) {
       return category;
     }
   }
@@ -46,7 +47,6 @@ export async function analyzeTechRadar(
   onProgress?.("Scanning repository for dependency files...");
 
   // Track both package names and their mapped technology names
-  const packageToTech = new Map<string, string>(); // package -> technology name
   const currentPackages = new Set<string>();
   const historicalPackages = new Set<string>();
 
@@ -55,7 +55,6 @@ export async function analyzeTechRadar(
     const allFiles = getAllFiles(repoPath);
     const dependencyFiles = allFiles.filter(file => getAnalyzer(file) !== null);
     
-    onProgress?.(`Found ${allFiles.length} total files`);
     onProgress?.(`Analyzing ${dependencyFiles.length} dependency files...`);
 
     // Extract current dependencies
@@ -69,43 +68,25 @@ export async function analyzeTechRadar(
           const content = fs.readFileSync(fullPath, "utf-8");
           const deps = analyzer.extractDependencies(file, content);
           
-          if (deps.length > 0) {
-            onProgress?.(`[${filesProcessed}/${dependencyFiles.length}] ${file}: ${deps.length} dependencies`);
-            deps.forEach(dep => {
-              if (dep) { // Skip null values from @types filtering
-                currentPackages.add(dep);
-              }
-            });
-          } else {
-            onProgress?.(`[${filesProcessed}/${dependencyFiles.length}] ${file}: no dependencies`);
-          }
+          onProgress?.(`[${filesProcessed}/${dependencyFiles.length}] ${file}: ${deps.length} dependencies`);
+          deps.forEach(dep => {
+            if (dep) { // Skip null values from @types filtering
+              currentPackages.add(dep);
+            }
+          });
 
           // Extract historical dependencies
           onProgress?.(`Analyzing history of ${file}...`);
           const history = await extractTechnologyHistory(repoPath, file, onProgress);
           
-          if (history.length > 0) {
-            onProgress?.(`${file} has ${history.length} historical versions`);
-            
-            // Log first and last snapshot for debugging
-            if (history.length > 0) {
-              const oldest = history[0];
-              const newest = history[history.length - 1];
-              onProgress?.(`  Oldest (${oldest.date}): ${oldest.dependencies.length} deps`);
-              onProgress?.(`  Newest (${newest.date}): ${newest.dependencies.length} deps`);
-            }
-            
-            // Collect all historical dependencies
-            history.forEach(snapshot => {
-              snapshot.dependencies.forEach(dep => {
-                if (dep) {
-                  historicalPackages.add(dep);
-                }
-              });
+          // Collect all historical dependencies
+          history.forEach(snapshot => {
+            snapshot.dependencies.forEach(dep => {
+              if (dep) {
+                historicalPackages.add(dep);
+              }
             });
-          } else {
-            onProgress?.(`${file} has no git history`);
-          }
+          });
         } catch (error) {
           onProgress?.(`[${filesProcessed}/${dependencyFiles.length}] ${file}: error - ${error}`);
           console.error(`Error analyzing ${file}:`, error);
@@ -114,7 +95,6 @@ export async function analyzeTechRadar(
     }
 
     onProgress?.(`Identified ${currentPackages.size} technologies in use`);
-    onProgress?.(`Found ${historicalPackages.size} total historical dependencies`);
 
     // Find removed dependencies (in history but not current)
     const removedPackages = Array.from(historicalPackages).filter(
@@ -123,24 +103,34 @@ export async function analyzeTechRadar(
 
     onProgress?.(`Found ${removedPackages.length} removed dependencies`);
     
-    if (removedPackages.length > 0) {
-      onProgress?.(`Removed deps: ${removedPackages.slice(0, 5).join(", ")}${removedPackages.length > 5 ? "..." : ""}`);
+    // Group dependencies by technology
+    const adoptTechnologies = groupDependenciesByTechnology(Array.from(currentPackages), getTechnologyNameForPackage);
+    const removeTechnologies = groupDependenciesByTechnology(removedPackages, getTechnologyNameForPackage);
+
+    // Merge: if a technology appears in both adopt and remove, add it only to adopt
+    // but include the removed dependencies in removedDependencies field
+    const adoptTechMap = new Map(adoptTechnologies.map(t => [t.name, t]));
+    const finalRemove: TechnologyItem[] = [];
+    
+    for (const removedTech of removeTechnologies) {
+      const adoptTech = adoptTechMap.get(removedTech.name);
+      if (adoptTech) {
+        // Technology exists in both - add removed deps to adopt card
+        adoptTech.removedDependencies = removedTech.dependencies;
+      } else {
+        // Technology only in remove
+        finalRemove.push(removedTech);
+      }
     }
     
-    // Group dependencies by technology
-    const adoptTechnologies = groupDependenciesByTechnology(Array.from(currentPackages));
-    const removeTechnologies = groupDependenciesByTechnology(removedPackages);
-    
-    onProgress?.(`Grouped into ${adoptTechnologies.length} active technologies`);
-    onProgress?.(`Grouped into ${removeTechnologies.length} removed technologies`);
-    onProgress?.("Tech radar analysis complete");
+    onProgress?.("Analysis complete");
 
     return {
       assess: [],
       trial: [],
       adopt: adoptTechnologies,
       hold: [],
-      remove: removeTechnologies,
+      remove: finalRemove,
       branch: "main",
     };
   } catch (error) {
@@ -151,34 +141,40 @@ export async function analyzeTechRadar(
 
 /**
  * Group dependencies by their technology name and assign categories
+ * @param dependencies - Array of package names (e.g., ["react", "react-dom", "webpack"])
+ * @param getTechName - Function to map package name to technology name
  */
-function groupDependenciesByTechnology(dependencies: string[]): TechnologyItem[] {
-  // Group dependencies by technology name
-  // Dependencies are already technology names (e.g., "React", "Spring Boot")
-  // We treat each as its own technology for now
+function groupDependenciesByTechnology(
+  dependencies: string[], 
+  getTechName: (packageName: string) => string
+): TechnologyItem[] {
+  // Group package names by their technology
   const technologyMap = new Map<string, Set<string>>();
   
-  for (const techName of dependencies) {
+  for (const packageName of dependencies) {
+    const techName = getTechName(packageName);
     if (!technologyMap.has(techName)) {
       technologyMap.set(techName, new Set());
     }
-    // For now, the technology name is the same as the dependency
-    // In the future, we could track original package names if needed
-    technologyMap.get(techName)!.add(techName);
+    technologyMap.get(techName)!.add(packageName);
   }
   
   // Convert to TechnologyItem array
   const items: TechnologyItem[] = [];
-  for (const [techName, depsSet] of technologyMap.entries()) {
+  for (const [techName, packagesSet] of technologyMap.entries()) {
     items.push({
       name: techName,
       category: getCategoryForTechnology(techName),
-      dependencies: Array.from(depsSet),
+      dependencies: Array.from(packagesSet),
     });
   }
   
-  // Sort by category, then by name
+  // Sort by category (with 'Other' at the end), then by name
   return items.sort((a, b) => {
+    // Always put 'Other' category at the end
+    if (a.category === "Other" && b.category !== "Other") return 1;
+    if (a.category !== "Other" && b.category === "Other") return -1;
+    
     if (a.category !== b.category) {
       return a.category.localeCompare(b.category);
     }
@@ -227,7 +223,6 @@ export async function extractTechnologyHistory(
     );
     
     const availableSet = new Set(availableCommits.trim().split('\n').filter(Boolean));
-    console.log(`[History] Total commits available locally: ${availableSet.size}`);
     
     // Get all commits that modified this file - use --all to search all refs
     const gitLog = execSync(
@@ -236,29 +231,30 @@ export async function extractTechnologyHistory(
     );
 
     if (!gitLog.trim()) {
-      onProgress?.(`No git history found for ${dependencyFile}`);
-      console.log(`[History] No git log output for ${dependencyFile}`);
       return [];
     }
 
     // Parse commits - each commit is on a single line with format "hash|date"
     const commitLines = gitLog.trim().split('\n').filter(Boolean);
-    console.log(`[History] Raw git log returned ${commitLines.length} lines for ${dependencyFile}`);
     
     const history: Array<{ date: string; dependencies: string[] }> = [];
-    let successCount = 0;
-    let skippedCount = 0;
+    const totalCommits = commitLines.length;
 
-    for (const line of commitLines) {
+    for (let i = 0; i < commitLines.length; i++) {
+      const line = commitLines[i];
       if (!line.includes('|')) continue;
       
       const [hash, date] = line.split("|");
       
       // Skip commits we don't have locally (shallow clone limitation)
       if (!availableSet.has(hash)) {
-        skippedCount++;
         continue;
       }
+      
+      // Progress indicator
+      const percent = Math.round(((i + 1) / totalCommits) * 100);
+      onProgress?.(`${dependencyFile}: ${percent}% (${i + 1}/${totalCommits} commits)`);
+      
       
       try {
         // Get file content at this commit
@@ -274,28 +270,11 @@ export async function extractTechnologyHistory(
             date: date.split(" ")[0], // Just the date part
             dependencies: deps,
           });
-          successCount++;
         }
-      } catch (err) {
+      } catch {
         // File might not exist in this commit or commit not available (sparse checkout limitation)
-        // Only log if we have very few failures (likely a real issue)
-        skippedCount++;
-        if (skippedCount <= 3) {
-          console.log(`[History] Could not access ${dependencyFile} at commit ${hash.substring(0, 8)} (sparse checkout)`);
-        }
         continue;
       }
-    }
-
-    // Only log summary if there were any successes or if debugging is needed
-    if (successCount > 0 || commitLines.length <= 10) {
-      console.log(`[History] ${dependencyFile}: ${successCount} analyzed, ${skippedCount} unavailable (${commitLines.length} total commits)`);
-    }
-    
-    if (skippedCount > 0 && successCount > 0) {
-      onProgress?.(`${dependencyFile}: analyzed ${successCount}/${commitLines.length} commits`);
-    } else if (successCount > 0) {
-      onProgress?.(`${dependencyFile}: analyzed ${successCount} commit${successCount > 1 ? 's' : ''}`);
     }
     
     return history.reverse(); // Oldest first

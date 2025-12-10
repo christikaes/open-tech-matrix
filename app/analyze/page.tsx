@@ -7,6 +7,8 @@ import Link from "next/link";
 
 // Simple TechRadarMatrix component for now
 function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: string }) {
+  const [showDetails, setShowDetails] = useState(false);
+
   // Group technologies by category
   const groupByCategory = (items: typeof data.adopt) => {
     const grouped = new Map<string, typeof data.adopt>();
@@ -19,14 +21,28 @@ function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: st
     return grouped;
   };
 
+  console.log(data.adopt)
+
   const adoptByCategory = groupByCategory(data.adopt);
   const removeByCategory = groupByCategory(data.remove);
+
+  console.log({adoptByCategory, removeByCategory});
 
   return (
     <div className="p-8">
       <div className="rounded-lg bg-white p-8 shadow-lg">
-        <h2 className="mb-6 text-2xl font-bold text-teal-600">Tech Radar Matrix</h2>
-        <p className="mb-4 text-gray-600">Repository: {repoUrl}</p>
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-teal-600">Tech Radar Matrix</h2>
+            <p className="mt-1 text-gray-600">Repository: {repoUrl}</p>
+          </div>
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="rounded-lg bg-teal-600 px-4 py-2 font-medium text-white transition-colors hover:bg-teal-700"
+          >
+            {showDetails ? "Hide Details" : "Show Details"}
+          </button>
+        </div>
         
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
@@ -44,7 +60,14 @@ function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: st
             </thead>
             <tbody>
               {/* Collect all unique categories */}
-              {Array.from(new Set([...adoptByCategory.keys(), ...removeByCategory.keys()])).sort().map((category) => (
+              {Array.from(new Set([...adoptByCategory.keys(), ...removeByCategory.keys()]))
+                .sort((a, b) => {
+                  // Always put 'Other' at the bottom
+                  if (a === "Other" && b !== "Other") return 1;
+                  if (a !== "Other" && b === "Other") return -1;
+                  return a.localeCompare(b);
+                })
+                .map((category) => (
                 <tr key={category} className="hover:bg-teal-50">
                   <td className="border border-teal-200 px-4 py-3 font-medium text-gray-900">
                     {category}
@@ -56,39 +79,68 @@ function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: st
                     <span className="text-gray-400">-</span>
                   </td>
                   <td className="border border-teal-200 px-4 py-3 align-top">
-                    <div className="flex flex-wrap gap-2">
-                      {adoptByCategory.get(category)?.map((tech, idx) => (
-                        <div key={idx} className="rounded-lg border border-green-300 bg-green-50 p-2">
-                          <div className="mb-1 font-semibold text-green-900">{tech.name}</div>
-                          <div className="flex flex-wrap gap-1">
-                            {tech.dependencies.map((dep, depIdx) => (
-                              <span key={depIdx} className="rounded bg-green-200 px-1.5 py-0.5 text-xs text-green-800">
-                                {dep}
-                              </span>
-                            ))}
+                    {category === "Other" ? (
+                      <div className="flex flex-wrap gap-1">
+                        {adoptByCategory.get(category)?.flatMap(tech => tech.dependencies).map((dep, idx) => (
+                          <span key={idx} className="rounded bg-green-200 px-1.5 py-0.5 text-xs text-green-800">
+                            {dep}
+                          </span>
+                        )) || <span className="text-gray-400">-</span>}
+                      </div>
+                    ) : (
+                      <div className="flex flex-wrap gap-2">
+                        {adoptByCategory.get(category)?.map((tech, idx) => (
+                          <div key={idx} className="rounded-lg border border-green-300 bg-green-50 p-2">
+                            <div className="mb-1 font-semibold text-green-900">{tech.name}</div>
+                            {showDetails && (
+                              <div className="flex flex-wrap gap-1">
+                                {tech.dependencies.map((dep, depIdx) => (
+                                  <span key={depIdx} className="rounded bg-green-200 px-1.5 py-0.5 text-xs text-green-800">
+                                    {dep}
+                                  </span>
+                                ))}
+                                {tech.removedDependencies?.map((dep, depIdx) => (
+                                  <span key={`removed-${depIdx}`} className="rounded bg-red-200 px-1.5 py-0.5 text-xs text-red-800">
+                                    {dep}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      )) || <span className="text-gray-400">-</span>}
-                    </div>
+                        )) || <span className="text-gray-400">-</span>}
+                      </div>
+                    )}
                   </td>
                   <td className="border border-teal-200 px-4 py-3 align-top">
                     <span className="text-gray-400">-</span>
                   </td>
                   <td className="border border-teal-200 px-4 py-3 align-top">
-                    <div className="flex flex-wrap gap-2">
-                      {removeByCategory.get(category)?.map((tech, idx) => (
-                        <div key={idx} className="rounded-lg border border-red-300 bg-red-50 p-2">
-                          <div className="mb-1 font-semibold text-red-900">{tech.name}</div>
-                          <div className="flex flex-wrap gap-1">
-                            {tech.dependencies.map((dep, depIdx) => (
-                              <span key={depIdx} className="rounded bg-red-200 px-1.5 py-0.5 text-xs text-red-800">
-                                {dep}
-                              </span>
-                            ))}
+                    {category === "Other" ? (
+                      <div className="flex flex-wrap gap-1">
+                        {removeByCategory.get(category)?.flatMap(tech => tech.dependencies).map((dep, idx) => (
+                          <span key={idx} className="rounded bg-red-200 px-1.5 py-0.5 text-xs text-red-800">
+                            {dep}
+                          </span>
+                        )) || <span className="text-gray-400">-</span>}
+                      </div>
+                    ) : (
+                      <div className="flex flex-wrap gap-2">
+                        {removeByCategory.get(category)?.map((tech, idx) => (
+                          <div key={idx} className="rounded-lg border border-red-300 bg-red-50 p-2">
+                            <div className="mb-1 font-semibold text-red-900">{tech.name}</div>
+                            {showDetails && (
+                              <div className="flex flex-wrap gap-1">
+                                {tech.dependencies.map((dep, depIdx) => (
+                                  <span key={depIdx} className="rounded bg-red-200 px-1.5 py-0.5 text-xs text-red-800">
+                                    {dep}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      )) || <span className="text-gray-400">-</span>}
-                    </div>
+                        )) || <span className="text-gray-400">-</span>}
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -124,7 +176,12 @@ function AnalyzePageContent() {
     const fetchRadarData = () => {
       setLoading(true);
       setError(null);
-      setProgressMessages([]);
+      setProgressMessages(["Connecting to repository...", "Preparing to fetch..."]);
+
+      // Show initial progress before EventSource connects
+      setTimeout(() => {
+        setProgressMessages(prev => [...prev, "Fetching repository..."]);
+      }, 500);
 
       const eventSource = new EventSource(`/api/analyze?repoUrl=${encodeURIComponent(repoUrl)}`);
 
@@ -196,26 +253,30 @@ function AnalyzePageContent() {
 
         {loading && (
           <div className="rounded-lg bg-white p-12 text-center shadow-md mx-8">
-            <div className="mb-4 text-6xl">🎯</div>
+            <div className="mb-4 text-6xl animate-pulse">🎯</div>
             <p className="text-xl font-semibold text-gray-700">
               Analyzing repository...
             </p>
             {progressMessages.length > 0 && (
-              <div className="mt-4 space-y-2 max-h-40 overflow-y-auto">
+              <div className="mt-6 space-y-2 max-h-40 overflow-y-auto">
                 {progressMessages.map((msg, idx) => (
-                  <p 
-                    key={idx} 
-                    className="text-sm text-teal-600 font-medium"
-                    style={{ opacity: 0.5 + (idx / progressMessages.length) * 0.5 }}
-                  >
-                    {msg}
-                  </p>
+                  <div key={idx} className="flex items-center justify-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></div>
+                    <p 
+                      className="text-sm text-gray-700 font-medium"
+                      style={{ opacity: 0.4 + (idx / progressMessages.length) * 0.6 }}
+                    >
+                      {msg}
+                    </p>
+                  </div>
                 ))}
               </div>
             )}
-            <p className="mt-2 text-gray-500">
-              Building tech radar matrix...
-            </p>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-teal-500 animate-bounce" style={{ animationDelay: '0ms' }}></div>
+              <div className="w-2 h-2 rounded-full bg-teal-500 animate-bounce" style={{ animationDelay: '150ms' }}></div>
+              <div className="w-2 h-2 rounded-full bg-teal-500 animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            </div>
           </div>
         )}
 

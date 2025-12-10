@@ -1,0 +1,71 @@
+{
+  "Standard Library Extensions": {
+    "Boost": ["boost", "boost-*", "libboost*"]
+  },
+  "Testing": {
+    "Google Test": ["gtest", "googletest", "google-test"],
+    "Catch2": ["catch2"],
+    "doctest": ["doctest"],
+    "CppUnit": ["cppunit"]
+  },
+  "Logging": {
+    "spdlog": ["spdlog"],
+    "glog": ["glog", "google-glog"],
+    "log4cpp": ["log4cpp"]
+  },
+  "Serialization": {
+    "nlohmann/json": ["nlohmann-json", "nlohmann_json", "json"],
+    "RapidJSON": ["rapidjson"],
+    "jsoncpp": ["jsoncpp"],
+    "Protobuf": ["protobuf", "libprotobuf"],
+    "FlatBuffers": ["flatbuffers"],
+    "Cereal": ["cereal"]
+  },
+  "HTTP/Networking": {
+    "cURL": ["curl", "libcurl"],
+    "cpp-httplib": ["cpp-httplib", "httplib"],
+    "Poco": ["poco", "poco-*"],
+    "Boost.Asio": ["boost-asio"]
+  },
+  "Database": {
+    "SQLite": ["sqlite3", "sqlite"],
+    "MySQL Connector": ["mysqlclient", "mysql-connector-cpp"],
+    "PostgreSQL": ["libpq", "pqxx"],
+    "MongoDB C++ Driver": ["mongocxx", "bsoncxx"]
+  },
+  "GUI": {
+    "Qt": ["qt5", "qt6", "qt5-*", "qt6-*"],
+    "wxWidgets": ["wxwidgets"],
+    "GTK": ["gtk", "gtk-*", "gtkmm"],
+    "Dear ImGui": ["imgui"]
+  },
+  "Graphics": {
+    "OpenGL": ["opengl", "glew", "glfw", "glfw3"],
+    "Vulkan": ["vulkan"],
+    "SDL": ["sdl2", "sdl2-*"]
+  },
+  "Math/Linear Algebra": {
+    "Eigen": ["eigen", "eigen3"],
+    "Armadillo": ["armadillo"],
+    "GLM": ["glm"]
+  },
+  "Threading/Concurrency": {
+    "Intel TBB": ["tbb", "intel-tbb"],
+    "OpenMP": ["openmp"]
+  },
+  "Compression": {
+    "zlib": ["zlib"],
+    "Bzip2": ["bzip2"]
+  },
+  "Crypto": {
+    "OpenSSL": ["openssl", "libssl"],
+    "Crypto++": ["cryptopp", "crypto++"]
+  },
+  "Build Tools": {
+    "CMake": ["cmake"]
+  },
+  "Package Managers": {
+    "Conan": ["conan"],
+    "vcpkg": ["vcpkg"]
+  }
+}
