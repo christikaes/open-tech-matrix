@@ -4,79 +4,436 @@
     "Rocket": ["rocket", "rocket_*"],
     "Axum": ["axum"],
     "Warp": ["warp"],
-    "Tide": ["tide"]
+    "Tide": ["tide"],
+    "Salvo": ["salvo"],
+    "Poem": ["poem"],
+    "Gotham": ["gotham"],
+    "Iron": ["iron"],
+    "Nickel": ["nickel"],
+    "Rouille": ["rouille"],
+    "Thruster": ["thruster"]
   },
   "Async Runtime": {
     "Tokio": ["tokio", "tokio-*"],
-    "async-std": ["async-std"]
+    "async-std": ["async-std"],
+    "smol": ["smol"],
+    "embassy": ["embassy", "embassy-*"],
+    "futures": ["futures", "futures-*"]
   },
   "Serialization": {
     "Serde": ["serde", "serde_*"],
-    "bincode": ["bincode"]
+    "bincode": ["bincode"],
+    "rmp": ["rmp", "rmp-serde"],
+    "toml": ["toml"],
+    "ron": ["ron"],
+    "postcard": ["postcard"],
+    "ciborium": ["ciborium"],
+    "serde_cbor": ["serde_cbor"]
   },
-  "HTTP": {
+  "JSON": {
+    "serde_json": ["serde_json"],
+    "simd-json": ["simd-json"],
+    "json": ["json"],
+    "serde-json-core": ["serde-json-core"]
+  },
+  "HTTP Client": {
     "reqwest": ["reqwest"],
-    "hyper": ["hyper"]
+    "hyper": ["hyper", "hyper-*"],
+    "surf": ["surf"],
+    "ureq": ["ureq"],
+    "isahc": ["isahc"],
+    "attohttpc": ["attohttpc"]
   },
-  "Database/ORM": {
+  "Database & ORM": {
     "Diesel": ["diesel", "diesel_*"],
     "SQLx": ["sqlx", "sqlx-*"],
-    "SeaORM": ["sea-orm", "sea-orm-*"]
+    "SeaORM": ["sea-orm", "sea-orm-*"],
+    "rbatis": ["rbatis"],
+    "tokio-postgres": ["tokio-postgres"],
+    "postgres": ["postgres"],
+    "mysql": ["mysql", "mysql_async"],
+    "rusqlite": ["rusqlite"],
+    "mongodb": ["mongodb"],
+    "redis": ["redis", "redis-*"],
+    "cassandra-cpp": ["cassandra-cpp"],
+    "scylla": ["scylla"]
+  },
+  "Database Drivers": {
+    "rusqlite": ["rusqlite"],
+    "postgres": ["postgres", "tokio-postgres"],
+    "mysql": ["mysql", "mysql_async"],
+    "mongodb": ["mongodb"],
+    "redis": ["redis"],
+    "sqlx": ["sqlx"]
   },
   "Testing": {
     "criterion": ["criterion"],
     "mockall": ["mockall"],
-    "proptest": ["proptest"]
+    "proptest": ["proptest"],
+    "quickcheck": ["quickcheck"],
+    "rstest": ["rstest"],
+    "spectral": ["spectral"],
+    "assert_cmd": ["assert_cmd"],
+    "pretty_assertions": ["pretty_assertions"],
+    "insta": ["insta"],
+    "fake": ["fake"],
+    "wiremock": ["wiremock"],
+    "cucumber": ["cucumber"]
   },
-  "CLI": {
+  "Benchmarking": {
+    "criterion": ["criterion"],
+    "divan": ["divan"],
+    "iai": ["iai"]
+  },
+  "CLI Tools": {
     "clap": ["clap"],
-    "structopt": ["structopt"]
+    "structopt": ["structopt"],
+    "argh": ["argh"],
+    "pico-args": ["pico-args"],
+    "gumdrop": ["gumdrop"],
+    "bpaf": ["bpaf"]
+  },
+  "Terminal UI": {
+    "crossterm": ["crossterm"],
+    "termion": ["termion"],
+    "ratatui": ["ratatui"],
+    "tui": ["tui"],
+    "cursive": ["cursive"],
+    "console": ["console"],
+    "indicatif": ["indicatif"],
+    "dialoguer": ["dialoguer"],
+    "colored": ["colored"],
+    "ansi_term": ["ansi_term"],
+    "owo-colors": ["owo-colors"]
   },
   "Logging": {
     "log": ["log"],
     "env_logger": ["env_logger"],
-    "tracing": ["tracing", "tracing-*"]
+    "tracing": ["tracing", "tracing-*"],
+    "slog": ["slog", "slog-*"],
+    "fern": ["fern"],
+    "simplelog": ["simplelog"],
+    "flexi_logger": ["flexi_logger"],
+    "pretty_env_logger": ["pretty_env_logger"]
   },
   "Error Handling": {
     "anyhow": ["anyhow"],
-    "thiserror": ["thiserror"]
+    "thiserror": ["thiserror"],
+    "eyre": ["eyre", "color-eyre"],
+    "snafu": ["snafu"],
+    "miette": ["miette"]
   },
-  "Date/Time": {
+  "Date & Time": {
     "chrono": ["chrono"],
-    "time": ["time"]
+    "time": ["time"],
+    "humantime": ["humantime"]
   },
   "Utilities": {
     "uuid": ["uuid"],
     "regex": ["regex"],
-    "rand": ["rand", "rand_*"]
+    "rand": ["rand", "rand_*"],
+    "lazy_static": ["lazy_static"],
+    "once_cell": ["once_cell"],
+    "itertools": ["itertools"],
+    "rayon": ["rayon"],
+    "dashmap": ["dashmap"],
+    "parking_lot": ["parking_lot"],
+    "crossbeam": ["crossbeam", "crossbeam-*"],
+    "bytes": ["bytes"],
+    "memmap2": ["memmap2"],
+    "num": ["num", "num-*"],
+    "bitflags": ["bitflags"],
+    "derive_more": ["derive_more"],
+    "strum": ["strum", "strum_macros"]
   },
   "GraphQL": {
+    "async-graphql": ["async-graphql", "async-graphql-*"],
     "juniper": ["juniper", "juniper-*"],
-    "async-graphql": ["async-graphql", "async-graphql-*"]
+    "cynic": ["cynic"]
+  },
+  "gRPC": {
+    "tonic": ["tonic", "tonic-*"],
+    "grpcio": ["grpcio"],
+    "prost": ["prost", "prost-*"]
   },
   "Template Engines": {
     "tera": ["tera"],
-    "handlebars": ["handlebars"]
+    "handlebars": ["handlebars"],
+    "askama": ["askama", "askama_*"],
+    "liquid": ["liquid"],
+    "maud": ["maud"],
+    "horrorshow": ["horrorshow"],
+    "sailfish": ["sailfish"]
   },
-  "Config": {
+  "Configuration": {
     "config": ["config"],
-    "dotenv": ["dotenv"]
+    "toml": ["toml"],
+    "dotenv": ["dotenv"],
+    "envy": ["envy"],
+    "figment": ["figment"],
+    "confy": ["confy"]
   },
   "Compression": {
-    "flate2": ["flate2"]
+    "flate2": ["flate2"],
+    "brotli": ["brotli"],
+    "lz4": ["lz4", "lz4_flex"],
+    "zstd": ["zstd"],
+    "snap": ["snap"],
+    "tar": ["tar"],
+    "zip": ["zip"]
   },
   "Image Processing": {
-    "image": ["image"]
+    "image": ["image"],
+    "imageproc": ["imageproc"],
+    "photon": ["photon"],
+    "resvg": ["resvg"]
   },
   "WebAssembly": {
-    "wasm-bindgen": ["wasm-bindgen", "wasm-bindgen-*"]
+    "wasm-bindgen": ["wasm-bindgen", "wasm-bindgen-*"],
+    "web-sys": ["web-sys"],
+    "js-sys": ["js-sys"],
+    "wasm-pack": ["wasm-pack"],
+    "yew": ["yew"],
+    "leptos": ["leptos"],
+    "dioxus": ["dioxus"],
+    "seed": ["seed"],
+    "percy": ["percy"]
   },
-  "Crypto": {
+  "Cryptography": {
     "ring": ["ring"],
-    "rustls": ["rustls"]
+    "rustls": ["rustls", "rustls-*"],
+    "openssl": ["openssl", "openssl-*"],
+    "sha2": ["sha2"],
+    "blake3": ["blake3"],
+    "argon2": ["argon2"],
+    "bcrypt": ["bcrypt"],
+    "aes": ["aes", "aes-gcm"],
+    "rsa": ["rsa"],
+    "ed25519-dalek": ["ed25519-dalek"],
+    "x25519-dalek": ["x25519-dalek"],
+    "rand_core": ["rand_core"]
+  },
+  "Authentication": {
+    "jsonwebtoken": ["jsonwebtoken"],
+    "oauth2": ["oauth2"],
+    "paseto": ["paseto"]
   },
   "Data Processing": {
     "arrow": ["arrow", "arrow-*"],
-    "parquet": ["parquet"]
+    "parquet": ["parquet"],
+    "polars": ["polars", "polars-*"],
+    "datafusion": ["datafusion"],
+    "csv": ["csv"],
+    "serde_csv": ["serde_csv"],
+    "calamine": ["calamine"],
+    "xlsxwriter": ["xlsxwriter"]
+  },
+  "PDF": {
+    "printpdf": ["printpdf"],
+    "genpdf": ["genpdf"],
+    "lopdf": ["lopdf"],
+    "pdf": ["pdf"]
+  },
+  "Email": {
+    "lettre": ["lettre"],
+    "mail-send": ["mail-send"],
+    "imap": ["imap"]
+  },
+  "Networking": {
+    "tokio": ["tokio"],
+    "async-std": ["async-std"],
+    "mio": ["mio"],
+    "socket2": ["socket2"],
+    "trust-dns": ["trust-dns", "trust-dns-*"],
+    "quinn": ["quinn"],
+    "libp2p": ["libp2p", "libp2p-*"]
+  },
+  "WebSocket": {
+    "tungstenite": ["tungstenite"],
+    "tokio-tungstenite": ["tokio-tungstenite"],
+    "async-tungstenite": ["async-tungstenite"],
+    "ws": ["ws"]
+  },
+  "Messaging": {
+    "lapin": ["lapin"],
+    "rdkafka": ["rdkafka"],
+    "async-nats": ["async-nats"],
+    "mqtt": ["rumqttc", "paho-mqtt"]
+  },
+  "Caching": {
+    "cached": ["cached"],
+    "moka": ["moka"],
+    "mini-moka": ["mini-moka"],
+    "lru": ["lru"]
+  },
+  "Background Jobs": {
+    "tokio": ["tokio"],
+    "async-std": ["async-std"],
+    "cron": ["cron"],
+    "job_scheduler": ["job_scheduler"]
+  },
+  "Validation": {
+    "validator": ["validator", "validator_derive"],
+    "garde": ["garde"]
+  },
+  "API Documentation": {
+    "utoipa": ["utoipa", "utoipa-*"],
+    "paperclip": ["paperclip"]
+  },
+  "Monitoring & Metrics": {
+    "prometheus": ["prometheus"],
+    "opentelemetry": ["opentelemetry", "opentelemetry-*"],
+    "tracing": ["tracing", "tracing-*"],
+    "metrics": ["metrics", "metrics-*"],
+    "sentry": ["sentry", "sentry-*"]
+  },
+  "Cloud SDKs": {
+    "aws-sdk": ["aws-sdk-*", "aws-config"],
+    "rusoto": ["rusoto_*"],
+    "azure_core": ["azure_core", "azure_*"],
+    "google-cloud": ["google-cloud-*"]
+  },
+  "Machine Learning": {
+    "tch": ["tch"],
+    "burn": ["burn"],
+    "candle": ["candle-core"],
+    "ndarray": ["ndarray"],
+    "linfa": ["linfa", "linfa-*"],
+    "smartcore": ["smartcore"],
+    "tensorflow": ["tensorflow"]
+  },
+  "Game Development": {
+    "bevy": ["bevy", "bevy_*"],
+    "amethyst": ["amethyst"],
+    "ggez": ["ggez"],
+    "piston": ["piston", "piston_*"],
+    "macroquad": ["macroquad"],
+    "fyrox": ["fyrox"],
+    "luminance": ["luminance"]
+  },
+  "GUI": {
+    "iced": ["iced", "iced_*"],
+    "egui": ["egui"],
+    "druid": ["druid"],
+    "slint": ["slint"],
+    "tauri": ["tauri", "tauri-*"],
+    "gtk": ["gtk", "gtk4"],
+    "fltk": ["fltk"],
+    "native-windows-gui": ["native-windows-gui"],
+    "sciter": ["sciter-rs"]
+  },
+  "Graphics": {
+    "wgpu": ["wgpu"],
+    "glium": ["glium"],
+    "vulkano": ["vulkano"],
+    "ash": ["ash"],
+    "gfx": ["gfx", "gfx-*"],
+    "three-d": ["three-d"],
+    "nannou": ["nannou"],
+    "pixels": ["pixels"]
+  },
+  "Audio": {
+    "rodio": ["rodio"],
+    "cpal": ["cpal"],
+    "symphonia": ["symphonia"],
+    "hound": ["hound"]
+  },
+  "Video": {
+    "ffmpeg": ["ffmpeg-next"],
+    "gstreamer": ["gstreamer", "gstreamer-*"]
+  },
+  "Embedded": {
+    "embedded-hal": ["embedded-hal"],
+    "embassy": ["embassy", "embassy-*"],
+    "rtic": ["rtic"],
+    "cortex-m": ["cortex-m"],
+    "stm32": ["stm32f*"],
+    "esp-idf-sys": ["esp-idf-sys"],
+    "nrf-hal": ["nrf*-hal"]
+  },
+  "Blockchain": {
+    "ethers": ["ethers", "ethers-*"],
+    "web3": ["web3"],
+    "solana-sdk": ["solana-sdk", "solana-*"],
+    "substrate": ["substrate", "sp-*"]
+  },
+  "Parser Combinators": {
+    "nom": ["nom"],
+    "pest": ["pest", "pest_derive"],
+    "combine": ["combine"],
+    "winnow": ["winnow"],
+    "chumsky": ["chumsky"]
+  },
+  "Code Generation": {
+    "quote": ["quote"],
+    "syn": ["syn"],
+    "proc-macro2": ["proc-macro2"],
+    "derive_builder": ["derive_builder"]
+  },
+  "Concurrency": {
+    "rayon": ["rayon"],
+    "crossbeam": ["crossbeam", "crossbeam-*"],
+    "tokio": ["tokio"],
+    "async-std": ["async-std"],
+    "parking_lot": ["parking_lot"],
+    "flume": ["flume"]
+  },
+  "FFI": {
+    "bindgen": ["bindgen"],
+    "cbindgen": ["cbindgen"],
+    "cxx": ["cxx"],
+    "pyo3": ["pyo3", "pyo3-*"],
+    "neon": ["neon"],
+    "jni": ["jni"]
+  },
+  "Memory Management": {
+    "bumpalo": ["bumpalo"],
+    "typed-arena": ["typed-arena"],
+    "generational-arena": ["generational-arena"],
+    "slotmap": ["slotmap"]
+  },
+  "String Processing": {
+    "regex": ["regex"],
+    "aho-corasick": ["aho-corasick"],
+    "unicode-segmentation": ["unicode-segmentation"],
+    "heck": ["heck"],
+    "inflector": ["inflector"]
+  },
+  "File I/O": {
+    "walkdir": ["walkdir"],
+    "globset": ["globset"],
+    "notify": ["notify"],
+    "tempfile": ["tempfile"],
+    "directories": ["directories"],
+    "path-absolutize": ["path-absolutize"]
+  },
+  "Rate Limiting": {
+    "governor": ["governor"],
+    "ratelimit": ["ratelimit"]
+  },
+  "Feature Flags": {
+    "unleash-api-client": ["unleash-api-client"],
+    "flipper": ["flipper"]
+  },
+  "Search": {
+    "tantivy": ["tantivy"],
+    "meilisearch-sdk": ["meilisearch-sdk"],
+    "typesense": ["typesense"]
+  },
+  "Build Tools": {
+    "cargo": ["cargo"],
+    "cargo-make": ["cargo-make"],
+    "just": ["just"]
+  },
+  "Package Management": {
+    "cargo": ["cargo"],
+    "cargo-edit": ["cargo-edit"],
+    "cargo-outdated": ["cargo-outdated"]
+  },
+  "Code Quality": {
+    "clippy": ["clippy"],
+    "rustfmt": ["rustfmt"],
+    "cargo-audit": ["cargo-audit"],
+    "cargo-deny": ["cargo-deny"]
   }
 }

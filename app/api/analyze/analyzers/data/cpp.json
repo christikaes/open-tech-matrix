@@ -1,71 +1,339 @@
 {
   "Standard Library Extensions": {
-    "Boost": ["boost", "boost-*", "libboost*"]
+    "Boost": ["boost", "boost-*", "libboost*"],
+    "Abseil": ["abseil", "abseil-cpp", "absl"],
+    "EASTL": ["eastl"],
+    "Folly": ["folly"]
   },
   "Testing": {
-    "Google Test": ["gtest", "googletest", "google-test"],
+    "Google Test": ["gtest", "googletest", "google-test", "gmock"],
     "Catch2": ["catch2"],
     "doctest": ["doctest"],
-    "CppUnit": ["cppunit"]
+    "CppUnit": ["cppunit"],
+    "Bandit": ["bandit"],
+    "Boost.Test": ["boost-test"],
+    "CTest": ["ctest"],
+    "Unity": ["unity"],
+    "fff": ["fff"],
+    "Fakeit": ["fakeit"]
+  },
+  "Benchmarking": {
+    "Google Benchmark": ["benchmark", "google-benchmark"],
+    "Hayai": ["hayai"],
+    "Celero": ["celero"],
+    "nonius": ["nonius"]
   },
   "Logging": {
     "spdlog": ["spdlog"],
     "glog": ["glog", "google-glog"],
-    "log4cpp": ["log4cpp"]
+    "log4cpp": ["log4cpp"],
+    "log4cplus": ["log4cplus"],
+    "Boost.Log": ["boost-log"],
+    "plog": ["plog"],
+    "easyloggingpp": ["easyloggingpp"],
+    "g3log": ["g3log"],
+    "NanoLog": ["nanolog"],
+    "quill": ["quill"]
   },
   "Serialization": {
     "nlohmann/json": ["nlohmann-json", "nlohmann_json", "json"],
     "RapidJSON": ["rapidjson"],
     "jsoncpp": ["jsoncpp"],
+    "simdjson": ["simdjson"],
     "Protobuf": ["protobuf", "libprotobuf"],
     "FlatBuffers": ["flatbuffers"],
-    "Cereal": ["cereal"]
+    "Cereal": ["cereal"],
+    "MessagePack": ["msgpack", "msgpack-c"],
+    "BSON": ["libbson"],
+    "Cap'n Proto": ["capnproto"],
+    "thrift": ["thrift"],
+    "pugixml": ["pugixml"],
+    "tinyxml2": ["tinyxml2"],
+    "RapidXML": ["rapidxml"],
+    "yaml-cpp": ["yaml-cpp"]
   },
   "HTTP/Networking": {
     "cURL": ["curl", "libcurl"],
     "cpp-httplib": ["cpp-httplib", "httplib"],
     "Poco": ["poco", "poco-*"],
-    "Boost.Asio": ["boost-asio"]
+    "Boost.Asio": ["boost-asio"],
+    "Beast": ["boost-beast"],
+    "cpr": ["cpr"],
+    "restclient-cpp": ["restclient-cpp"],
+    "restbed": ["restbed"],
+    "Pistache": ["pistache"],
+    "Drogon": ["drogon"],
+    "oat++": ["oatpp"],
+    "Crow": ["crow", "crowcpp"],
+    "Casablanca": ["cpprestsdk"],
+    "libhv": ["libhv"],
+    "uWebSockets": ["uwebsockets"],
+    "Seastar": ["seastar"],
+    "evpp": ["evpp"],
+    "muduo": ["muduo"],
+    "libuv": ["libuv"],
+    "libev": ["libev"],
+    "libevent": ["libevent"],
+    "ZeroMQ": ["zeromq", "libzmq", "cppzmq"]
   },
-  "Database": {
-    "SQLite": ["sqlite3", "sqlite"],
+  "Web Frameworks": {
+    "Drogon": ["drogon"],
+    "oat++": ["oatpp"],
+    "Crow": ["crow"],
+    "Pistache": ["pistache"],
+    "CppCMS": ["cppcms"],
+    "TreeFrog": ["treefrog"],
+    "Wt": ["wt", "witty"]
+  },
+  "Database Drivers": {
+    "SQLite": ["sqlite3", "sqlite", "sqlitecpp"],
     "MySQL Connector": ["mysqlclient", "mysql-connector-cpp"],
-    "PostgreSQL": ["libpq", "pqxx"],
-    "MongoDB C++ Driver": ["mongocxx", "bsoncxx"]
+    "PostgreSQL": ["libpq", "pqxx", "libpqxx"],
+    "MongoDB C++ Driver": ["mongocxx", "bsoncxx"],
+    "Redis": ["hiredis", "redis-plus-plus", "cpp_redis"],
+    "ODBC": ["odbc", "unixodbc"],
+    "SOCI": ["soci"],
+    "OTL": ["otl"],
+    "QxOrm": ["qxorm"],
+    "LevelDB": ["leveldb"],
+    "RocksDB": ["rocksdb"],
+    "LMDB": ["lmdb"]
   },
-  "GUI": {
-    "Qt": ["qt5", "qt6", "qt5-*", "qt6-*"],
+  "ORM": {
+    "ODB": ["odb"],
+    "QxOrm": ["qxorm"],
+    "sqlite_orm": ["sqlite_orm"]
+  },
+  "GUI Frameworks": {
+    "Qt": ["qt5", "qt6", "qt5-*", "qt6-*", "qtbase", "qtwidgets"],
     "wxWidgets": ["wxwidgets"],
     "GTK": ["gtk", "gtk-*", "gtkmm"],
-    "Dear ImGui": ["imgui"]
+    "FLTK": ["fltk"],
+    "Dear ImGui": ["imgui"],
+    "Nuklear": ["nuklear"],
+    "nana": ["nana"],
+    "JUCE": ["juce"],
+    "U++": ["upp"],
+    "IUP": ["iup"],
+    "CEGUI": ["cegui"],
+    "MyGUI": ["mygui"],
+    "nanogui": ["nanogui"]
   },
-  "Graphics": {
-    "OpenGL": ["opengl", "glew", "glfw", "glfw3"],
-    "Vulkan": ["vulkan"],
-    "SDL": ["sdl2", "sdl2-*"]
+  "Graphics & Rendering": {
+    "OpenGL": ["opengl", "glew", "glfw", "glfw3", "glad"],
+    "Vulkan": ["vulkan", "vulkan-headers"],
+    "SDL": ["sdl2", "sdl2-*"],
+    "SFML": ["sfml", "sfml-*"],
+    "Allegro": ["allegro", "allegro5"],
+    "Ogre3D": ["ogre", "ogre3d"],
+    "Irrlicht": ["irrlicht"],
+    "bgfx": ["bgfx"],
+    "Magnum": ["magnum", "magnum-*"],
+    "OpenSceneGraph": ["openscenegraph"],
+    "Panda3D": ["panda3d"],
+    "raylib": ["raylib"],
+    "sokol": ["sokol"]
   },
-  "Math/Linear Algebra": {
+  "Game Engines": {
+    "Unreal Engine": ["unreal"],
+    "Godot": ["godot"],
+    "Cocos2d-x": ["cocos2d", "cocos2d-x"],
+    "Torque3D": ["torque3d"],
+    "Urho3D": ["urho3d"]
+  },
+  "Math & Linear Algebra": {
     "Eigen": ["eigen", "eigen3"],
     "Armadillo": ["armadillo"],
-    "GLM": ["glm"]
+    "GLM": ["glm"],
+    "BLAS": ["blas", "openblas"],
+    "LAPACK": ["lapack"],
+    "Blaze": ["blaze"],
+    "xtensor": ["xtensor"],
+    "Dlib": ["dlib"],
+    "CGAL": ["cgal"],
+    "GSL": ["gsl"],
+    "Ceres Solver": ["ceres", "ceres-solver"]
   },
-  "Threading/Concurrency": {
-    "Intel TBB": ["tbb", "intel-tbb"],
-    "OpenMP": ["openmp"]
+  "Physics Engines": {
+    "Bullet": ["bullet", "bullet3"],
+    "Box2D": ["box2d"],
+    "PhysX": ["physx"],
+    "ODE": ["ode"],
+    "Chipmunk": ["chipmunk"],
+    "Newton Dynamics": ["newton-dynamics"]
+  },
+  "Audio": {
+    "PortAudio": ["portaudio"],
+    "FMOD": ["fmod"],
+    "OpenAL": ["openal", "openal-soft"],
+    "RtAudio": ["rtaudio"],
+    "miniaudio": ["miniaudio"],
+    "SoLoud": ["soloud"],
+    "SFML Audio": ["sfml-audio"],
+    "SDL_mixer": ["sdl2-mixer"]
+  },
+  "Video Processing": {
+    "FFmpeg": ["ffmpeg", "libavcodec", "libavformat"],
+    "OpenCV": ["opencv", "opencv4"],
+    "GStreamer": ["gstreamer", "gstreamer-*"]
+  },
+  "Image Processing": {
+    "OpenCV": ["opencv", "opencv4"],
+    "ImageMagick": ["imagemagick", "magick++"],
+    "FreeImage": ["freeimage"],
+    "DevIL": ["devil"],
+    "stb_image": ["stb"],
+    "CImg": ["cimg"],
+    "libpng": ["libpng"],
+    "libjpeg": ["libjpeg", "libjpeg-turbo"],
+    "libtiff": ["libtiff"],
+    "libwebp": ["libwebp"]
+  },
+  "Computer Vision": {
+    "OpenCV": ["opencv", "opencv4"],
+    "Dlib": ["dlib"],
+    "PCL": ["pcl"],
+    "OpenMVG": ["openmvg"],
+    "COLMAP": ["colmap"]
+  },
+  "Machine Learning & AI": {
+    "TensorFlow": ["tensorflow", "tensorflow-lite"],
+    "PyTorch": ["pytorch", "libtorch"],
+    "ONNX Runtime": ["onnxruntime"],
+    "Caffe": ["caffe"],
+    "Dlib": ["dlib"],
+    "mlpack": ["mlpack"],
+    "Shark": ["shark"],
+    "shogun": ["shogun"],
+    "OpenNN": ["opennn"]
+  },
+  "Threading & Concurrency": {
+    "Intel TBB": ["tbb", "intel-tbb", "onetbb"],
+    "OpenMP": ["openmp"],
+    "Threading Building Blocks": ["tbb"],
+    "Taskflow": ["taskflow"],
+    "thread-pool-cpp": ["thread-pool"],
+    "Boost.Thread": ["boost-thread"],
+    "Microsoft PPL": ["ppl"]
+  },
+  "Memory Management": {
+    "jemalloc": ["jemalloc"],
+    "tcmalloc": ["gperftools", "tcmalloc"],
+    "mimalloc": ["mimalloc"],
+    "Boehm GC": ["bdw-gc"]
   },
   "Compression": {
     "zlib": ["zlib"],
-    "Bzip2": ["bzip2"]
+    "Bzip2": ["bzip2"],
+    "lz4": ["lz4"],
+    "zstd": ["zstd"],
+    "xz": ["xz", "liblzma"],
+    "snappy": ["snappy"],
+    "brotli": ["brotli"],
+    "libarchive": ["libarchive"]
   },
-  "Crypto": {
-    "OpenSSL": ["openssl", "libssl"],
-    "Crypto++": ["cryptopp", "crypto++"]
+  "Cryptography & Security": {
+    "OpenSSL": ["openssl", "libssl", "libcrypto"],
+    "Crypto++": ["cryptopp", "crypto++"],
+    "libsodium": ["libsodium"],
+    "Botan": ["botan"],
+    "mbedTLS": ["mbedtls"],
+    "GnuTLS": ["gnutls"],
+    "Nettle": ["nettle"],
+    "Tiny AES": ["tiny-aes"]
   },
-  "Build Tools": {
-    "CMake": ["cmake"]
+  "Regular Expressions": {
+    "PCRE": ["pcre", "pcre2"],
+    "RE2": ["re2"],
+    "Boost.Regex": ["boost-regex"],
+    "CTRE": ["ctre"]
   },
-  "Package Managers": {
+  "Command Line Parsing": {
+    "CLI11": ["cli11"],
+    "cxxopts": ["cxxopts"],
+    "argparse": ["argparse"],
+    "gflags": ["gflags"],
+    "TCLAP": ["tclap"],
+    "Boost.Program_options": ["boost-program-options"],
+    "args": ["args"]
+  },
+  "Build Tools & Package Managers": {
+    "CMake": ["cmake"],
     "Conan": ["conan"],
-    "vcpkg": ["vcpkg"]
+    "vcpkg": ["vcpkg"],
+    "Meson": ["meson"],
+    "Bazel": ["bazel"],
+    "SCons": ["scons"],
+    "Ninja": ["ninja"],
+    "xmake": ["xmake"]
+  },
+  "Documentation": {
+    "Doxygen": ["doxygen"],
+    "Sphinx": ["sphinx"],
+    "cldoc": ["cldoc"]
+  },
+  "Reflection & Metaprogramming": {
+    "Ponder": ["ponder"],
+    "rttr": ["rttr"],
+    "meta": ["meta"],
+    "ctti": ["ctti"]
+  },
+  "Formatting": {
+    "fmt": ["fmt"],
+    "spdlog": ["spdlog"]
+  },
+  "Date & Time": {
+    "date": ["date", "howard-hinnant-date"],
+    "Boost.DateTime": ["boost-date-time"],
+    "CCTZ": ["cctz"]
+  },
+  "UUID": {
+    "sole": ["sole"],
+    "crossguid": ["crossguid"],
+    "stduuid": ["stduuid"],
+    "Boost.Uuid": ["boost-uuid"]
+  },
+  "Scripting": {
+    "Lua": ["lua", "luajit"],
+    "sol2": ["sol2"],
+    "ChaiScript": ["chaiscript"],
+    "AngelScript": ["angelscript"],
+    "V8": ["v8"],
+    "Python": ["python3", "pybind11", "boost-python"]
+  },
+  "Interop": {
+    "pybind11": ["pybind11"],
+    "Boost.Python": ["boost-python"],
+    "SWIG": ["swig"]
+  },
+  "WebAssembly": {
+    "Emscripten": ["emscripten"],
+    "WebAssembly": ["wasm"]
+  },
+  "Code Quality": {
+    "Clang-Tidy": ["clang-tidy"],
+    "cppcheck": ["cppcheck"],
+    "cpplint": ["cpplint"],
+    "include-what-you-use": ["iwyu"]
+  },
+  "Data Structures": {
+    "abseil": ["abseil"],
+    "Boost.Container": ["boost-container"],
+    "robin-hood-hashing": ["robin-hood-hashing"],
+    "parallel-hashmap": ["parallel-hashmap"]
+  },
+  "Profiling & Performance": {
+    "gperftools": ["gperftools"],
+    "Valgrind": ["valgrind"],
+    "Intel VTune": ["vtune"],
+    "perf": ["perf"],
+    "Tracy": ["tracy"]
+  },
+  "Messaging": {
+    "gRPC": ["grpc", "grpc++"],
+    "ZeroMQ": ["zeromq", "zmq", "cppzmq"],
+    "nanomsg": ["nanomsg"],
+    "Kafka C/C++": ["librdkafka"],
+    "RabbitMQ": ["amqp-cpp", "rabbitmq-c"]
   }
 }

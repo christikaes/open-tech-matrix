@@ -21,12 +21,8 @@ function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: st
     return grouped;
   };
 
-  console.log(data.adopt)
-
   const adoptByCategory = groupByCategory(data.adopt);
   const removeByCategory = groupByCategory(data.remove);
-
-  console.log({adoptByCategory, removeByCategory});
 
   return (
     <div className="p-8">

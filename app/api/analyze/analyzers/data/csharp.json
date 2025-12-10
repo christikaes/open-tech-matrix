@@ -1,73 +1,311 @@
 {
   "Web Frameworks": {
-    "ASP.NET Core": [
-      "Microsoft.AspNetCore.*",
-      "Microsoft.AspNetCore.App",
-      "Microsoft.AspNetCore.All"
-    ]
+    "ASP.NET Core": ["Microsoft.AspNetCore.*", "Microsoft.AspNetCore.App", "Microsoft.AspNetCore.All"],
+    "ASP.NET MVC": ["Microsoft.AspNet.Mvc"],
+    "ASP.NET Web API": ["Microsoft.AspNet.WebApi.*"],
+    "Nancy": ["Nancy", "Nancy.*"],
+    "ServiceStack": ["ServiceStack", "ServiceStack.*"],
+    "Carter": ["Carter"],
+    "Giraffe": ["Giraffe"],
+    "Saturn": ["Saturn"]
   },
   "Database & ORM": {
-    "Entity Framework Core": [
-      "Microsoft.EntityFrameworkCore",
-      "Microsoft.EntityFrameworkCore.*"
-    ],
+    "Entity Framework Core": ["Microsoft.EntityFrameworkCore", "Microsoft.EntityFrameworkCore.*"],
     "Entity Framework": ["EntityFramework"],
     "Dapper": ["Dapper", "Dapper.*"],
+    "NHibernate": ["NHibernate", "NHibernate.*"],
+    "LLBLGen Pro": ["SD.LLBLGen.Pro.*"],
     "Npgsql": ["Npgsql", "Npgsql.*"],
     "MySql.Data": ["MySql.Data", "MySqlConnector"],
-    "MongoDB.Driver": ["MongoDB.Driver", "MongoDB.Driver.*"]
+    "MongoDB.Driver": ["MongoDB.Driver", "MongoDB.Driver.*"],
+    "StackExchange.Redis": ["StackExchange.Redis", "StackExchange.Redis.*"],
+    "Dapper.Contrib": ["Dapper.Contrib"],
+    "SqlKata": ["SqlKata", "SqlKata.*"],
+    "RepoDb": ["RepoDb", "RepoDb.*"],
+    "Marten": ["Marten"],
+    "linq2db": ["linq2db", "linq2db.*"],
+    "PetaPoco": ["PetaPoco"],
+    "Massive": ["Massive"]
   },
   ".NET Core": {
-    ".NET": [
-      "Microsoft.NETCore.*",
-      "Microsoft.Extensions.*"
-    ]
+    ".NET": ["Microsoft.NETCore.*", "Microsoft.Extensions.*"]
   },
   "Testing": {
     "xUnit": ["xunit", "xunit.*"],
     "NUnit": ["NUnit", "NUnit.*"],
     "MSTest": ["MSTest.TestFramework", "MSTest.TestAdapter"],
     "Moq": ["Moq"],
-    "FluentAssertions": ["FluentAssertions"]
+    "NSubstitute": ["NSubstitute"],
+    "FakeItEasy": ["FakeItEasy"],
+    "FluentAssertions": ["FluentAssertions"],
+    "Shouldly": ["Shouldly"],
+    "SpecFlow": ["SpecFlow", "SpecFlow.*"],
+    "AutoFixture": ["AutoFixture", "AutoFixture.*"],
+    "Bogus": ["Bogus"],
+    "Respawn": ["Respawn"],
+    "Testcontainers": ["Testcontainers", "Testcontainers.*"],
+    "BenchmarkDotNet": ["BenchmarkDotNet", "BenchmarkDotNet.*"],
+    "NBomber": ["NBomber"],
+    "Verify": ["Verify.*"],
+    "Snapshooter": ["Snapshooter", "Snapshooter.*"]
   },
   "Logging": {
     "Serilog": ["Serilog", "Serilog.*"],
     "NLog": ["NLog", "NLog.*"],
-    "log4net": ["log4net"]
+    "log4net": ["log4net"],
+    "Microsoft.Extensions.Logging": ["Microsoft.Extensions.Logging", "Microsoft.Extensions.Logging.*"],
+    "Elmah": ["Elmah", "Elmah.*"],
+    "Seq": ["Seq.Extensions.Logging"],
+    "Loupe": ["Gibraltar.Agent"]
   },
   "Serialization": {
     "Newtonsoft.Json": ["Newtonsoft.Json"],
-    "System.Text.Json": ["System.Text.Json"]
+    "System.Text.Json": ["System.Text.Json"],
+    "protobuf-net": ["protobuf-net"],
+    "MessagePack": ["MessagePack", "MessagePack.*"],
+    "YamlDotNet": ["YamlDotNet"],
+    "CsvHelper": ["CsvHelper"],
+    "Utf8Json": ["Utf8Json"],
+    "Jil": ["Jil"],
+    "ServiceStack.Text": ["ServiceStack.Text"]
   },
-  "HTTP/API": {
+  "HTTP Client": {
     "RestSharp": ["RestSharp"],
     "Refit": ["Refit", "Refit.*"],
-    "Polly": ["Polly", "Polly.*"]
+    "Flurl": ["Flurl", "Flurl.*"],
+    "HttpClientFactory": ["Microsoft.Extensions.Http", "Microsoft.Extensions.Http.Polly"]
   },
-  "Utilities": {
+  "Resilience": {
+    "Polly": ["Polly", "Polly.*"],
+    "Simmy": ["Simmy", "Simmy.*"]
+  },
+  "Dependency Injection": {
+    "Autofac": ["Autofac", "Autofac.*"],
+    "Ninject": ["Ninject", "Ninject.*"],
+    "StructureMap": ["StructureMap", "StructureMap.*"],
+    "Unity": ["Unity", "Unity.*"],
+    "SimpleInjector": ["SimpleInjector", "SimpleInjector.*"],
+    "Castle Windsor": ["Castle.Windsor"],
+    "DryIoc": ["DryIoc", "DryIoc.*"],
+    "LightInject": ["LightInject", "LightInject.*"]
+  },
+  "Mapping": {
     "AutoMapper": ["AutoMapper", "AutoMapper.*"],
-    "Autofac": ["Autofac", "Autofac.*"]
-  },
-  "Real-time Communication": {
-    "SignalR": ["Microsoft.AspNetCore.SignalR", "Microsoft.AspNetCore.SignalR.*"]
-  },
-  "UI Frameworks": {
-    "Blazor": ["Microsoft.AspNetCore.Components.WebAssembly", "Microsoft.AspNetCore.Components.*"]
-  },
-  "Auth": {
-    "Identity": ["Microsoft.AspNetCore.Identity", "Microsoft.AspNetCore.Identity.*"]
-  },
-  "API Documentation": {
-    "Swagger": ["Swashbuckle.AspNetCore", "Swashbuckle.AspNetCore.*", "NSwag.*"]
-  },
-  "CQRS": {
-    "MediatR": ["MediatR", "MediatR.*"]
+    "Mapster": ["Mapster", "Mapster.*"],
+    "AgileMapper": ["AgileObjects.AgileMapper"],
+    "ExpressMapper": ["ExpressMapper"]
   },
   "Validation": {
-    "FluentValidation": ["FluentValidation", "FluentValidation.*"]
+    "FluentValidation": ["FluentValidation", "FluentValidation.*"],
+    "DataAnnotations": ["System.ComponentModel.DataAnnotations"],
+    "GuardClauses": ["Ardalis.GuardClauses"]
   },
-  "Cloud": {
+  "Real-time Communication": {
+    "SignalR": ["Microsoft.AspNetCore.SignalR", "Microsoft.AspNetCore.SignalR.*", "Microsoft.AspNet.SignalR"]
+  },
+  "UI Frameworks": {
+    "Blazor": ["Microsoft.AspNetCore.Components.WebAssembly", "Microsoft.AspNetCore.Components.*"],
+    "Razor": ["Microsoft.AspNetCore.Mvc.Razor", "Microsoft.AspNetCore.Mvc.Razor.*"],
+    "MudBlazor": ["MudBlazor"],
+    "Radzen": ["Radzen.Blazor"],
+    "Blazorise": ["Blazorise", "Blazorise.*"],
+    "MatBlazor": ["MatBlazor"]
+  },
+  "Desktop UI": {
+    "WPF": ["PresentationFramework", "PresentationCore"],
+    "WinForms": ["System.Windows.Forms"],
+    "Avalonia": ["Avalonia", "Avalonia.*"],
+    "Uno Platform": ["Uno.UI", "Uno.UI.*"],
+    "MAUI": ["Microsoft.Maui.*"],
+    "Xamarin.Forms": ["Xamarin.Forms", "Xamarin.Forms.*"],
+    "Eto.Forms": ["Eto.Forms"],
+    "Terminal.Gui": ["Terminal.Gui"]
+  },
+  "Authentication & Authorization": {
+    "Identity": ["Microsoft.AspNetCore.Identity", "Microsoft.AspNetCore.Identity.*"],
+    "IdentityServer": ["IdentityServer4", "IdentityServer4.*", "Duende.IdentityServer", "Duende.IdentityServer.*"],
+    "Auth0": ["Auth0.AspNetCore.Authentication"],
+    "JWT": ["System.IdentityModel.Tokens.Jwt"],
+    "OpenIddict": ["OpenIddict", "OpenIddict.*"],
+    "AspNet.Security.OAuth": ["AspNet.Security.OAuth.*"]
+  },
+  "API Documentation": {
+    "Swagger": ["Swashbuckle.AspNetCore", "Swashbuckle.AspNetCore.*"],
+    "NSwag": ["NSwag.*"],
+    "Scalar": ["Scalar.AspNetCore"]
+  },
+  "GraphQL": {
+    "Hot Chocolate": ["HotChocolate", "HotChocolate.*"],
+    "GraphQL.NET": ["GraphQL", "GraphQL.*"],
+    "GraphQL for .NET": ["GraphQL.Server.*"]
+  },
+  "gRPC": {
+    "Grpc.AspNetCore": ["Grpc.AspNetCore", "Grpc.AspNetCore.*"],
+    "Grpc.Net.Client": ["Grpc.Net.Client", "Grpc.Net.Client.*"],
+    "Grpc.Core": ["Grpc.Core"],
+    "protobuf-net.Grpc": ["protobuf-net.Grpc", "protobuf-net.Grpc.*"]
+  },
+  "CQRS & Messaging": {
+    "MediatR": ["MediatR", "MediatR.*"],
+    "MassTransit": ["MassTransit", "MassTransit.*"],
+    "NServiceBus": ["NServiceBus", "NServiceBus.*"],
+    "Brighter": ["Paramore.Brighter", "Paramore.Brighter.*"],
+    "Rebus": ["Rebus", "Rebus.*"],
+    "EasyNetQ": ["EasyNetQ"],
+    "RawRabbit": ["RawRabbit", "RawRabbit.*"],
+    "Wolverine": ["Wolverine"]
+  },
+  "Event Sourcing": {
+    "EventStore": ["EventStore.Client", "EventStore.Client.*"],
+    "Marten": ["Marten"],
+    "NEventStore": ["NEventStore"]
+  },
+  "Caching": {
+    "MemoryCache": ["Microsoft.Extensions.Caching.Memory"],
+    "StackExchange.Redis": ["StackExchange.Redis"],
+    "CacheManager": ["CacheManager.Core", "CacheManager.*"],
+    "EasyCaching": ["EasyCaching.Core", "EasyCaching.*"],
+    "LazyCache": ["LazyCache", "LazyCache.*"],
+    "Akavache": ["Akavache", "Akavache.*"]
+  },
+  "Background Jobs": {
+    "Hangfire": ["Hangfire", "Hangfire.*"],
+    "Quartz.NET": ["Quartz", "Quartz.*"],
+    "FluentScheduler": ["FluentScheduler"],
+    "Coravel": ["Coravel"],
+    "NCrontab": ["NCrontab"]
+  },
+  "Email": {
+    "MailKit": ["MailKit"],
+    "MimeKit": ["MimeKit"],
+    "FluentEmail": ["FluentEmail.Core", "FluentEmail.*"],
+    "SendGrid": ["SendGrid"],
+    "Postal": ["Postal"]
+  },
+  "PDF": {
+    "iTextSharp": ["iTextSharp"],
+    "iText7": ["itext7", "itext7.*"],
+    "PdfSharp": ["PdfSharp", "PdfSharp.*"],
+    "QuestPDF": ["QuestPDF"],
+    "DinkToPdf": ["DinkToPdf"],
+    "SelectPdf": ["Select.HtmlToPdf"],
+    "Rotativa": ["Rotativa", "Rotativa.*"]
+  },
+  "Excel": {
+    "EPPlus": ["EPPlus"],
+    "NPOI": ["NPOI"],
+    "ClosedXML": ["ClosedXML"],
+    "DocumentFormat.OpenXml": ["DocumentFormat.OpenXml"],
+    "ExcelDataReader": ["ExcelDataReader"]
+  },
+  "Image Processing": {
+    "ImageSharp": ["SixLabors.ImageSharp", "SixLabors.ImageSharp.*"],
+    "SkiaSharp": ["SkiaSharp", "SkiaSharp.*"],
+    "Magick.NET": ["Magick.NET-*"],
+    "System.Drawing.Common": ["System.Drawing.Common"]
+  },
+  "Data Validation": {
+    "FluentValidation": ["FluentValidation", "FluentValidation.*"],
+    "CSharpFunctionalExtensions": ["CSharpFunctionalExtensions"],
+    "Optional": ["Optional"]
+  },
+  "Cloud Providers": {
     "Azure SDK": ["Azure.*", "Microsoft.Azure.*"],
-    "AWS SDK": ["AWSSDK.*"]
+    "AWS SDK": ["AWSSDK.*"],
+    "Google Cloud": ["Google.Cloud.*"]
+  },
+  "API Gateway": {
+    "Ocelot": ["Ocelot", "Ocelot.*"],
+    "YARP": ["Yarp.ReverseProxy"]
+  },
+  "Microservices": {
+    "Steeltoe": ["Steeltoe.*"],
+    "Dapr": ["Dapr.Client", "Dapr.AspNetCore"]
+  },
+  "Metrics & Monitoring": {
+    "Application Insights": ["Microsoft.ApplicationInsights", "Microsoft.ApplicationInsights.*"],
+    "prometheus-net": ["prometheus-net", "prometheus-net.*"],
+    "App.Metrics": ["App.Metrics", "App.Metrics.*"],
+    "OpenTelemetry": ["OpenTelemetry", "OpenTelemetry.*"],
+    "Sentry": ["Sentry", "Sentry.*"],
+    "Rollbar": ["Rollbar"],
+    "Raygun": ["Mindscape.Raygun4Net.*"]
+  },
+  "Configuration": {
+    "Microsoft.Extensions.Configuration": ["Microsoft.Extensions.Configuration", "Microsoft.Extensions.Configuration.*"],
+    "ConfigurationBuilder": ["Microsoft.Extensions.Configuration.Json"]
+  },
+  "CLI": {
+    "CommandLineParser": ["CommandLineParser"],
+    "System.CommandLine": ["System.CommandLine", "System.CommandLine.*"],
+    "Spectre.Console": ["Spectre.Console", "Spectre.Console.*"],
+    "McMaster.Extensions.CommandLineUtils": ["McMaster.Extensions.CommandLineUtils"],
+    "Colorful.Console": ["Colorful.Console"]
+  },
+  "Reactive Programming": {
+    "Rx.NET": ["System.Reactive", "System.Reactive.*"],
+    "DynamicData": ["DynamicData"]
+  },
+  "Code Analysis": {
+    "StyleCop.Analyzers": ["StyleCop.Analyzers"],
+    "Roslynator": ["Roslynator.Analyzers"],
+    "SonarAnalyzer.CSharp": ["SonarAnalyzer.CSharp"],
+    "SecurityCodeScan": ["SecurityCodeScan.VS2019"]
+  },
+  "Compression": {
+    "SharpZipLib": ["SharpZipLib"],
+    "DotNetZip": ["DotNetZip"],
+    "SharpCompress": ["SharpCompress"]
+  },
+  "Machine Learning": {
+    "ML.NET": ["Microsoft.ML", "Microsoft.ML.*"],
+    "Accord.NET": ["Accord", "Accord.*"],
+    "TensorFlow.NET": ["TensorFlow.NET", "TensorFlow.Keras"]
+  },
+  "Game Development": {
+    "Unity": ["UnityEngine", "UnityEngine.*"],
+    "MonoGame": ["MonoGame.Framework.*"],
+    "Godot": ["GodotSharp"]
+  },
+  "Template Engines": {
+    "Razor": ["RazorEngine", "RazorEngine.*"],
+    "Scriban": ["Scriban"],
+    "DotLiquid": ["DotLiquid"],
+    "Stubble": ["Stubble.Core"]
+  },
+  "Cryptography": {
+    "BouncyCastle": ["BouncyCastle", "BouncyCastle.*", "Portable.BouncyCastle"],
+    "libsodium": ["libsodium", "Sodium.Core"]
+  },
+  "Utilities": {
+    "Humanizer": ["Humanizer", "Humanizer.*"],
+    "FluentDateTime": ["FluentDateTime"],
+    "Noda Time": ["NodaTime"],
+    "MoreLINQ": ["morelinq"],
+    "Polly": ["Polly"],
+    "Scrutor": ["Scrutor"],
+    "Ardalis.Result": ["Ardalis.Result"],
+    "OneOf": ["OneOf"],
+    "FastEnum": ["FastEnum"],
+    "SmartEnum": ["Ardalis.SmartEnum"]
+  },
+  "Feature Flags": {
+    "FeatureManagement": ["Microsoft.FeatureManagement", "Microsoft.FeatureManagement.*"],
+    "Unleash": ["Unleash.Client"]
+  },
+  "Rate Limiting": {
+    "AspNetCoreRateLimit": ["AspNetCoreRateLimit"],
+    "FirewallRateLimiter": ["FirewallRateLimiter"]
+  },
+  "Health Checks": {
+    "AspNetCore.HealthChecks": ["Microsoft.Extensions.Diagnostics.HealthChecks", "AspNetCore.HealthChecks.*"]
+  },
+  "Localization": {
+    "ResX": ["System.Resources.Extensions"],
+    "Localization": ["Microsoft.Extensions.Localization", "Microsoft.Extensions.Localization.*"]
+  },
+  "Documentation": {
+    "DocFX": ["docfx.console"],
+    "Wyam": ["Wyam"]
   }
 }

@@ -5,6 +5,16 @@ export interface TechnologyItem {
   removedDependencies?: string[]; // Package names that were removed (only for technologies in adopt that also have removed deps)
 }
 
+export interface DisplayItem {
+  path: string;
+  displayName: string;
+  indent: number;
+  isDirectory: boolean;
+  fileIndices: number[];
+  id: string;
+  showInMatrix: boolean;
+}
+
 export interface TechMatrixData {
   assess: TechnologyItem[];
   trial: TechnologyItem[];

@@ -1,31 +1,289 @@
 {
-  "Frameworks": {
+  "Web Frameworks": {
     "Spring Boot": ["org.springframework.boot:*"],
-    "Spring": ["org.springframework:*"]
+    "Spring": ["org.springframework:*"],
+    "Spring MVC": ["org.springframework:spring-webmvc"],
+    "Spring WebFlux": ["org.springframework:spring-webflux"],
+    "Micronaut": ["io.micronaut:*"],
+    "Quarkus": ["io.quarkus:*"],
+    "Dropwizard": ["io.dropwizard:*"],
+    "Vert.x": ["io.vertx:*"],
+    "Play Framework": ["com.typesafe.play:*"],
+    "Spark Java": ["com.sparkjava:*"],
+    "Javalin": ["io.javalin:*"],
+    "Ratpack": ["io.ratpack:*"],
+    "Grails": ["org.grails:*"],
+    "Struts": ["org.apache.struts:*"],
+    "JSF": ["javax.faces:*", "com.sun.faces:*"],
+    "Vaadin": ["com.vaadin:*"],
+    "GWT": ["com.google.gwt:*"]
   },
   "Testing": {
     "JUnit": ["junit:junit", "org.junit.jupiter:*"],
     "Mockito": ["org.mockito:*"],
-    "TestNG": ["org.testng:*"]
+    "TestNG": ["org.testng:*"],
+    "AssertJ": ["org.assertj:*"],
+    "Hamcrest": ["org.hamcrest:*"],
+    "REST Assured": ["io.rest-assured:*"],
+    "WireMock": ["com.github.tomakehurst:wiremock"],
+    "Cucumber": ["io.cucumber:*"],
+    "Spock": ["org.spockframework:*"],
+    "JMockit": ["org.jmockit:*"],
+    "PowerMock": ["org.powermock:*"],
+    "Testcontainers": ["org.testcontainers:*"],
+    "JUnit Quickcheck": ["com.pholser:junit-quickcheck-*"],
+    "JBehave": ["org.jbehave:*"],
+    "Arquillian": ["org.jboss.arquillian:*"],
+    "Selenide": ["com.codeborne:selenide"],
+    "Serenity": ["net.serenity-bdd:*"],
+    "Karate": ["com.intuit.karate:*"]
   },
-  "Database": {
+  "Database & ORM": {
     "Hibernate": ["org.hibernate:*"],
     "MyBatis": ["org.mybatis:*"],
-    "JDBC": ["mysql:mysql-connector-java", "org.postgresql:postgresql"]
+    "JDBC": ["mysql:mysql-connector-java", "org.postgresql:postgresql"],
+    "JOOQ": ["org.jooq:*"],
+    "EclipseLink": ["org.eclipse.persistence:*"],
+    "QueryDSL": ["com.querydsl:*"],
+    "Exposed": ["org.jetbrains.exposed:*"],
+    "Spring Data JPA": ["org.springframework.data:spring-data-jpa"],
+    "Spring Data MongoDB": ["org.springframework.data:spring-data-mongodb"],
+    "Spring Data Redis": ["org.springframework.data:spring-data-redis"],
+    "Liquibase": ["org.liquibase:*"],
+    "Flyway": ["org.flywaydb:*"],
+    "DbUnit": ["org.dbunit:*"],
+    "H2": ["com.h2database:h2"],
+    "HikariCP": ["com.zaxxer:HikariCP"],
+    "C3P0": ["com.mchange:c3p0"],
+    "Jedis": ["redis.clients:jedis"],
+    "Lettuce": ["io.lettuce:*"],
+    "Cassandra Driver": ["com.datastax.cassandra:*"],
+    "MongoDB Driver": ["org.mongodb:*"],
+    "Elasticsearch": ["org.elasticsearch:*", "org.elasticsearch.client:*"],
+    "Neo4j": ["org.neo4j:*", "org.neo4j.driver:*"]
   },
   "Logging": {
     "SLF4J": ["org.slf4j:*"],
     "Logback": ["ch.qos.logback:*"],
-    "Log4j": ["org.apache.logging.log4j:*"]
+    "Log4j": ["org.apache.logging.log4j:*"],
+    "Log4j2": ["org.apache.logging.log4j:log4j-core"],
+    "JUL": ["java.util.logging:*"],
+    "TinyLog": ["org.tinylog:*"],
+    "Flogger": ["com.google.flogger:*"]
   },
   "Utilities": {
-    "Apache Commons": ["org.apache.commons:*", "commons-io:*"],
+    "Apache Commons": ["org.apache.commons:*", "commons-*"],
     "Guava": ["com.google.guava:*"],
     "Jackson": ["com.fasterxml.jackson.core:*"],
-    "Gson": ["com.google.code.gson:*"]
+    "Gson": ["com.google.code.gson:*"],
+    "JSON-B": ["javax.json.bind:*"],
+    "JSON-P": ["javax.json:*"],
+    "Moshi": ["com.squareup.moshi:*"],
+    "FastJSON": ["com.alibaba:fastjson"],
+    "Apache HttpClient": ["org.apache.httpcomponents:*"],
+    "OkHttp": ["com.squareup.okhttp3:*"],
+    "Retrofit": ["com.squareup.retrofit2:*"],
+    "Feign": ["io.github.openfeign:*"],
+    "RestTemplate": ["org.springframework:spring-web"],
+    "WebClient": ["org.springframework:spring-webflux"],
+    "Jsoup": ["org.jsoup:*"],
+    "HtmlUnit": ["net.sourceforge.htmlunit:*"],
+    "Joda-Time": ["joda-time:*"],
+    "ThreeTen": ["org.threeten:*"],
+    "MapStruct": ["org.mapstruct:*"],
+    "ModelMapper": ["org.modelmapper:*"],
+    "Dozer": ["com.github.dozermapper:*"],
+    "Lombok": ["org.projectlombok:lombok"],
+    "Immutables": ["org.immutables:*"],
+    "AutoValue": ["com.google.auto.value:*"],
+    "Vavr": ["io.vavr:*"],
+    "Eclipse Collections": ["org.eclipse.collections:*"],
+    "Caffeine": ["com.github.ben-manes.caffeine:*"],
+    "Ehcache": ["org.ehcache:*"],
+    "Hazelcast": ["com.hazelcast:*"],
+    "Infinispan": ["org.infinispan:*"],
+    "Resilience4j": ["io.github.resilience4j:*"],
+    "Hystrix": ["com.netflix.hystrix:*"],
+    "Failsafe": ["net.jodah:failsafe"],
+    "RxJava": ["io.reactivex.rxjava2:*", "io.reactivex.rxjava3:*"],
+    "Reactor": ["io.projectreactor:*"],
+    "Project Loom": ["org.openjdk.loom:*"],
+    "Quasar": ["co.paralleluniverse:quasar-core"]
   },
   "Build Tools": {
-    "Maven": ["org.apache.maven*"],
-    "Gradle": ["gradle"]
+    "Maven": ["org.apache.maven:*"],
+    "Gradle": ["gradle"],
+    "Ant": ["org.apache.ant:*"]
+  },
+  "Dependency Injection": {
+    "Spring DI": ["org.springframework:spring-context"],
+    "Guice": ["com.google.inject:*"],
+    "CDI": ["javax.enterprise:*"],
+    "Dagger": ["com.google.dagger:*"],
+    "PicoContainer": ["org.picocontainer:*"]
+  },
+  "Validation": {
+    "Hibernate Validator": ["org.hibernate.validator:*"],
+    "Bean Validation": ["javax.validation:*"],
+    "Apache BVal": ["org.apache.bval:*"]
+  },
+  "Security": {
+    "Spring Security": ["org.springframework.security:*"],
+    "Apache Shiro": ["org.apache.shiro:*"],
+    "Keycloak": ["org.keycloak:*"],
+    "JWT": ["io.jsonwebtoken:*"],
+    "Nimbus JOSE": ["com.nimbusds:*"],
+    "OAuth2": ["org.springframework.security.oauth:*"],
+    "Bouncy Castle": ["org.bouncycastle:*"],
+    "Jasypt": ["org.jasypt:*"],
+    "OWASP": ["org.owasp:*"]
+  },
+  "Serialization": {
+    "Jackson": ["com.fasterxml.jackson.core:*"],
+    "Gson": ["com.google.code.gson:*"],
+    "Kryo": ["com.esotericsoftware:kryo"],
+    "Protocol Buffers": ["com.google.protobuf:*"],
+    "Avro": ["org.apache.avro:*"],
+    "Thrift": ["org.apache.thrift:*"],
+    "MessagePack": ["org.msgpack:*"],
+    "FlatBuffers": ["com.google.flatbuffers:*"]
+  },
+  "Messaging": {
+    "Kafka": ["org.apache.kafka:*"],
+    "RabbitMQ": ["com.rabbitmq:*"],
+    "ActiveMQ": ["org.apache.activemq:*"],
+    "JMS": ["javax.jms:*"],
+    "Spring AMQP": ["org.springframework.amqp:*"],
+    "Spring Kafka": ["org.springframework.kafka:*"],
+    "Pulsar": ["org.apache.pulsar:*"],
+    "NATS": ["io.nats:*"]
+  },
+  "Microservices": {
+    "Spring Cloud": ["org.springframework.cloud:*"],
+    "Netflix Eureka": ["org.springframework.cloud:spring-cloud-starter-netflix-eureka-*"],
+    "Consul": ["org.springframework.cloud:spring-cloud-starter-consul-*"],
+    "Ribbon": ["com.netflix.ribbon:*"],
+    "Feign": ["org.springframework.cloud:spring-cloud-starter-openfeign"],
+    "Zuul": ["org.springframework.cloud:spring-cloud-starter-netflix-zuul"],
+    "Gateway": ["org.springframework.cloud:spring-cloud-starter-gateway"],
+    "Config Server": ["org.springframework.cloud:spring-cloud-config-server"],
+    "Sleuth": ["org.springframework.cloud:spring-cloud-starter-sleuth"],
+    "Zipkin": ["io.zipkin.*:*"]
+  },
+  "GraphQL": {
+    "GraphQL Java": ["com.graphql-java:*"],
+    "DGS": ["com.netflix.graphql.dgs:*"],
+    "Spring GraphQL": ["org.springframework.boot:spring-boot-starter-graphql"]
+  },
+  "gRPC": {
+    "gRPC": ["io.grpc:*"],
+    "gRPC Spring Boot": ["net.devh:grpc-*"]
+  },
+  "Documentation": {
+    "Swagger": ["io.springfox:*", "org.springdoc:*"],
+    "OpenAPI": ["io.swagger.core.v3:*"],
+    "Javadoc": ["org.apache.maven.plugins:maven-javadoc-plugin"],
+    "AsciiDoc": ["org.asciidoctor:*"]
+  },
+  "Template Engines": {
+    "Thymeleaf": ["org.thymeleaf:*"],
+    "FreeMarker": ["org.freemarker:*"],
+    "Velocity": ["org.apache.velocity:*"],
+    "Mustache": ["com.github.spullara.mustache.java:*"],
+    "Handlebars": ["com.github.jknack:handlebars"],
+    "Pebble": ["io.pebbletemplates:*"]
+  },
+  "Metrics & Monitoring": {
+    "Micrometer": ["io.micrometer:*"],
+    "Dropwizard Metrics": ["io.dropwizard.metrics:*"],
+    "Prometheus": ["io.prometheus:*"],
+    "Spring Boot Actuator": ["org.springframework.boot:spring-boot-starter-actuator"],
+    "JMX": ["javax.management:*"],
+    "JavaMelody": ["net.bull.javamelody:*"],
+    "Glowroot": ["org.glowroot:*"]
+  },
+  "Profiling": {
+    "JProfiler": ["com.jprofiler:*"],
+    "YourKit": ["com.yourkit:*"],
+    "Async Profiler": ["me.bechberger:*"]
+  },
+  "Scheduling": {
+    "Quartz": ["org.quartz-scheduler:*"],
+    "Spring Scheduler": ["org.springframework:spring-context"],
+    "Jobrunr": ["org.jobrunr:*"],
+    "db-scheduler": ["com.github.kagkarlsson:*"]
+  },
+  "Email": {
+    "JavaMail": ["com.sun.mail:*", "javax.mail:*"],
+    "Spring Mail": ["org.springframework.boot:spring-boot-starter-mail"],
+    "Apache Commons Email": ["org.apache.commons:commons-email"],
+    "Simple Java Mail": ["org.simplejavamail:*"]
+  },
+  "PDF": {
+    "iText": ["com.itextpdf:*"],
+    "Apache PDFBox": ["org.apache.pdfbox:*"],
+    "OpenPDF": ["com.github.librepdf:*"],
+    "Flying Saucer": ["org.xhtmlrenderer:*"],
+    "JasperReports": ["net.sf.jasperreports:*"]
+  },
+  "Excel": {
+    "Apache POI": ["org.apache.poi:*"],
+    "JExcel": ["net.sourceforge.jexcelapi:*"],
+    "EasyExcel": ["com.alibaba:easyexcel"]
+  },
+  "Code Analysis": {
+    "SpotBugs": ["com.github.spotbugs:*"],
+    "PMD": ["net.sourceforge.pmd:*"],
+    "Checkstyle": ["com.puppycrawl.tools:checkstyle"],
+    "Error Prone": ["com.google.errorprone:*"],
+    "NullAway": ["com.uber.nullaway:*"],
+    "SonarQube": ["org.sonarsource.scanner.maven:*"]
+  },
+  "ByteCode": {
+    "ASM": ["org.ow2.asm:*"],
+    "Javassist": ["org.javassist:*"],
+    "ByteBuddy": ["net.bytebuddy:*"],
+    "CGLIB": ["cglib:*"]
+  },
+  "Reactive": {
+    "Project Reactor": ["io.projectreactor:*"],
+    "RxJava": ["io.reactivex.rxjava3:*"],
+    "Akka": ["com.typesafe.akka:*"],
+    "Vert.x": ["io.vertx:*"]
+  },
+  "Cloud": {
+    "AWS SDK": ["software.amazon.awssdk:*", "com.amazonaws:*"],
+    "Azure SDK": ["com.azure:*"],
+    "Google Cloud": ["com.google.cloud:*"],
+    "Spring Cloud AWS": ["org.springframework.cloud:spring-cloud-starter-aws"],
+    "Spring Cloud Azure": ["com.azure.spring:*"],
+    "Spring Cloud GCP": ["org.springframework.cloud:spring-cloud-gcp-*"]
+  },
+  "CLI": {
+    "Picocli": ["info.picocli:*"],
+    "JCommander": ["com.beust:jcommander"],
+    "Args4j": ["args4j:*"],
+    "Apache Commons CLI": ["commons-cli:*"]
+  },
+  "Image Processing": {
+    "ImageJ": ["net.imagej:*"],
+    "TwelveMonkeys": ["com.twelvemonkeys.imageio:*"],
+    "Thumbnailator": ["net.coobird:thumbnailator"]
+  },
+  "Cryptography": {
+    "Bouncy Castle": ["org.bouncycastle:*"],
+    "Tink": ["com.google.crypto.tink:*"],
+    "Jasypt": ["org.jasypt:*"]
+  },
+  "Compression": {
+    "Apache Commons Compress": ["org.apache.commons:commons-compress"],
+    "Zip4j": ["net.lingala.zip4j:*"],
+    "LZ4": ["org.lz4:*"],
+    "Snappy": ["org.xerial.snappy:*"]
+  },
+  "Reflection": {
+    "Reflections": ["org.reflections:*"],
+    "Mirror": ["net.vidageek:mirror"],
+    "jOOR": ["org.jooq:joor"]
   }
 }

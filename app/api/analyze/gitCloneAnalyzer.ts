@@ -40,8 +40,6 @@ async function checkRepoSize(repoUrl: string): Promise<void> {
         `Please analyze a smaller repository.`
       );
     }
-    
-    console.log(`[Git Clone] Repository size: ${sizeInMB} MB (within ${MAX_REPO_SIZE_MB} MB limit)`);
   } finally {
     // Clean up check directory
     try {
@@ -66,8 +64,6 @@ async function cloneAndAnalyze(
   await checkRepoSize(repoUrl);
   
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), 'macaroni-'));
-  
-  console.log('[Git Clone] Starting clone:', { repoUrl, tmpDir });
   
   try {
     onProgress?.("Cloning repository... 0%");
@@ -123,7 +119,6 @@ async function cloneAndAnalyze(
     const branch = branchOutput.trim();
 
     const allFiles = stdout.split('\n').filter(file => file.trim() !== '');
-    console.log('[Git Clone] Total files in repo:', allFiles.length);
     
     const files = allFiles
       .filter(file => !EXCLUDED_DIRS.some(dir => file.includes(dir)))
@@ -148,12 +143,6 @@ async function cloneAndAnalyze(
         return a.localeCompare(b);
       });
 
-    console.log('[Git Clone] Files after filtering:', {
-      total: files.length,
-      branch,
-      sampleFiles: files.slice(0, 5)
-    });
-    
     onProgress?.(`Found ${files.length} files`);
     return { files, tmpDir, branch };
   } catch (error) {
@@ -177,12 +166,8 @@ export async function analyzeGitRepoWithClone(
 ): Promise<{ files: { [fileName: string]: FileData }; branch: string }> {
   let tmpDir = '';
   
-  console.log('[Git Clone Analyzer] Starting analysis for:', repoUrl);
-  
   try {
     const { files, tmpDir: clonedDir, branch } = await cloneAndAnalyze(repoUrl, onProgress);
-    console.log('[Git Clone Analyzer] Clone complete, analyzing', files.length, 'files');
-    console.log('[Git Clone Analyzer] Files in api/analyze (non-analyzers):', files.filter(f => f.includes('api/analyze') && !f.includes('analyzers')));
     tmpDir = clonedDir;
 
     const filesByAnalyzer = new Map<string, string[]>();
@@ -200,13 +185,6 @@ export async function analyzeGitRepoWithClone(
         filesByAnalyzer.get(analyzerKey)!.push(file);
       }
     }
-
-    console.log('[Git Clone Analyzer] Files grouped by language:', 
-      Array.from(filesByAnalyzer.entries()).map(([key, fileList]) => ({ 
-        analyzer: key, 
-        count: fileList.length 
-      }))
-    );
 
     const allDependencies = new Map<string, Map<string, number>>();
     
@@ -270,12 +248,6 @@ export async function analyzeGitRepoWithClone(
         dependencies,
       };
     }
-
-    console.log('[Git Clone Analyzer] Analysis complete:', {
-      totalFilesAnalyzed: Object.keys(fileData).length,
-      filesWithDependencies: Object.values(fileData).filter(f => f.dependencies.length > 0).length,
-      sampleFile: Object.keys(fileData)[0]
-    });
 
     return { files: fileData, branch };
   } finally {

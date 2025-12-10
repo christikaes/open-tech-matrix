@@ -10,6 +10,7 @@ const SAMPLE_PROJECTS = [
   { name: "C# | eShopOnWeb", url: "https://github.com/dotnet-architecture/eShopOnWeb" },
   { name: "Go | Gorilla Mux", url: "https://github.com/gorilla/mux" },
   { name: "C++ | SFML", url: "https://github.com/SFML/SFML" },
+  { name: "Rust | Actix Web", url: "https://github.com/actix/actix-web" },
 ];
 
 export default function Home() {
@@ -92,7 +93,7 @@ export default function Home() {
             Tech Radar Adoption Stages
           </h2>
           <div className="overflow-hidden rounded-lg border-2 border-teal-400 bg-white shadow-lg">
-            <table className="w-full">
+            <table className="w-full text-left">
               <thead className="bg-teal-100">
                 <tr>
                   <th className="px-6 py-3 text-left text-sm font-bold text-teal-900">Stage</th>

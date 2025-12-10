@@ -1,24 +1,56 @@
 {
   "Frontend Frameworks": {
     "React": ["react", "react-*"],
-    "Vue": ["vue", "vue-*", "vuex", "pinia"],
-    "Angular": ["@angular/*"],
-    "Svelte": ["svelte", "svelte-*"]
+    "Vue": ["vue", "vue-*", "vuex", "pinia", "@vue/*"],
+    "Angular": ["@angular/*", "*angular*"],
+    "Svelte": ["svelte", "svelte-*"],
+    "Solid": ["solid-js"],
+    "Preact": ["preact"],
+    "Lit": ["lit", "lit-element", "lit-html"],
+    "Alpine.js": ["alpinejs"],
+    "Ember": ["ember-*", "@ember/*"],
+    "Backbone": ["backbone"]
   },
   "Meta-Frameworks": {
-    "Next.js": ["next"]
+    "Next.js": ["next"],
+    "Nuxt": ["nuxt", "nuxt3"],
+    "Remix": ["@remix-run/*"],
+    "Gatsby": ["gatsby", "gatsby-*"],
+    "SvelteKit": ["@sveltejs/kit"],
+    "Astro": ["astro"],
+    "Qwik": ["@builder.io/qwik"],
+    "SolidStart": ["@solidjs/start"]
   },
   "Component Libraries": {
     "Material-UI": ["@mui/*", "@emotion/react", "@emotion/styled"],
     "Ant Design": ["antd", "@ant-design/*"],
     "Chakra UI": ["@chakra-ui/*"],
-    "Bootstrap": ["bootstrap", "react-bootstrap"]
+    "Bootstrap": ["bootstrap", "react-bootstrap", "@ng-bootstrap/*"],
+    "Shadcn UI": ["@radix-ui/*"],
+    "Mantine": ["@mantine/*"],
+    "Headless UI": ["@headlessui/*"],
+    "PrimeReact": ["primereact", "primeicons"],
+    "Blueprint": ["@blueprintjs/*"],
+    "Semantic UI": ["semantic-ui-*", "fomantic-ui"],
+    "Bulma": ["bulma"],
+    "Foundation": ["foundation-sites"],
+    "Materialize": ["materialize-css"],
+    "Grommet": ["grommet"],
+    "Evergreen": ["evergreen-ui"],
+    "Carbon": ["@carbon/react"],
+    "Fluent UI": ["@fluentui/*"]
   },
   "State Management": {
     "Redux": ["redux", "react-redux", "@reduxjs/toolkit", "redux-*"],
     "MobX": ["mobx", "mobx-*"],
     "Zustand": ["zustand"],
-    "Recoil": ["recoil"]
+    "Recoil": ["recoil"],
+    "Jotai": ["jotai"],
+    "Valtio": ["valtio"],
+    "XState": ["xstate", "@xstate/*"],
+    "Rematch": ["@rematch/*"],
+    "Easy Peasy": ["easy-peasy"],
+    "Overmind": ["overmind"]
   },
   "Build Tools": {
     "Webpack": ["webpack", "webpack-*"],
@@ -26,10 +58,19 @@
     "Rollup": ["rollup", "@rollup/*", "rollup-plugin-*"],
     "Parcel": ["parcel", "parcel-bundler"],
     "esbuild": ["esbuild"],
-    "Babel": ["babel", "@babel/*", "babel-*"]
+    "Babel": ["babel", "@babel/*", "babel-*"],
+    "Turbopack": ["turbopack"],
+    "SWC": ["@swc/*"],
+    "Snowpack": ["snowpack"],
+    "Browserify": ["browserify"],
+    "Grunt": ["grunt", "grunt-*"],
+    "Gulp": ["gulp", "gulp-*"],
+    "Brunch": ["brunch"]
   },
   "Languages": {
-    "TypeScript": ["typescript", "ts-node", "ts-loader", "tsx", "@typescript*", "typescript-*"]
+    "TypeScript": ["typescript", "ts-node", "ts-loader", "tsx", "@typescript*", "typescript-*"],
+    "CoffeeScript": ["coffeescript"],
+    "Dart": ["dart"]
   },
   "Unit Testing": {
     "Jest": ["jest", "@jest/*", "jest-environment-jsdom", "ts-jest", "babel-jest"],
@@ -37,15 +78,26 @@
     "Mocha": ["mocha", "chai", "chai-http", "mocha-*"],
     "Jasmine": ["jasmine", "jasmine-core"],
     "Testing Library": ["@testing-library/*"],
-    "Sinon": ["sinon", "sinon-*"]
+    "Sinon": ["sinon", "sinon-*"],
+    "Ava": ["ava"],
+    "Tape": ["tape"],
+    "Karma": ["karma", "karma-*"],
+    "QUnit": ["qunit"],
+    "Enzyme": ["enzyme", "enzyme-adapter-*"]
   },
   "E2E Testing": {
     "Cypress": ["cypress"],
-    "Playwright": ["@playwright/*", "playwright"]
+    "Playwright": ["@playwright/*", "playwright"],
+    "Puppeteer": ["puppeteer", "puppeteer-core"],
+    "Selenium": ["selenium-webdriver", "@wdio/*"],
+    "TestCafe": ["testcafe"],
+    "Nightwatch": ["nightwatch"]
   },
   "Linting": {
     "ESLint": ["eslint", "eslint-config-*", "eslint-plugin-*"],
-    "Stylelint": ["stylelint"]
+    "Stylelint": ["stylelint"],
+    "TSLint": ["tslint"],
+    "StandardJS": ["standard"]
   },
   "Formatting": {
     "Prettier": ["prettier"]
@@ -53,48 +105,465 @@
   "Styling": {
     "Tailwind CSS": ["tailwindcss", "@tailwindcss/*"],
     "Sass": ["sass", "node-sass", "sass-loader"],
-    "PostCSS": ["postcss", "autoprefixer", "postcss-loader"],
-    "Styled Components": ["styled-components"]
+    "PostCSS": ["postcss", "autoprefixer", "postcss-loader", "postcss-*"],
+    "Styled Components": ["styled-components"],
+    "Emotion": ["@emotion/*"],
+    "CSS Modules": ["css-loader"],
+    "Less": ["less", "less-loader"],
+    "Stylus": ["stylus", "stylus-loader"],
+    "Vanilla Extract": ["@vanilla-extract/*"],
+    "Stitches": ["@stitches/*"],
+    "Linaria": ["@linaria/*"],
+    "Twin.macro": ["twin.macro"],
+    "Theme UI": ["theme-ui"],
+    "JSS": ["jss", "react-jss"]
   },
   "HTTP/API": {
     "Axios": ["axios"],
     "GraphQL": ["graphql", "@apollo/*", "apollo-server", "graphql-request"],
     "tRPC": ["@trpc/*"],
-    "React Query": ["@tanstack/react-query", "react-query"]
+    "React Query": ["@tanstack/react-query", "react-query"],
+    "SWR": ["swr"],
+    "Fetch": ["node-fetch", "cross-fetch", "isomorphic-fetch"],
+    "Superagent": ["superagent"],
+    "Got": ["got"],
+    "Ky": ["ky"],
+    "Redaxios": ["redaxios"],
+    "URQL": ["urql", "@urql/*"],
+    "Relay": ["react-relay", "relay-runtime"]
   },
   "REST Servers": {
     "Express": ["express", "express-validator"],
-    "Fastify": ["fastify"],
-    "Koa": ["koa", "koa-router"],
-    "NestJS": ["@nestjs/*"]
+    "Fastify": ["fastify", "fastify-*"],
+    "Koa": ["koa", "koa-router", "koa-*"],
+    "NestJS": ["@nestjs/*"],
+    "Hapi": ["@hapi/*"],
+    "Restify": ["restify"],
+    "Polka": ["polka"],
+    "Micro": ["micro"],
+    "Adonis": ["@adonisjs/*"],
+    "Sails": ["sails"],
+    "Feathers": ["@feathersjs/*"],
+    "LoopBack": ["@loopback/*"]
   },
   "Database & ORM": {
     "Prisma": ["prisma", "@prisma/*"],
     "TypeORM": ["typeorm"],
     "Sequelize": ["sequelize"],
     "Mongoose": ["mongoose"],
-    "Drizzle ORM": ["drizzle-orm"]
+    "Drizzle ORM": ["drizzle-orm"],
+    "Knex": ["knex"],
+    "Bookshelf": ["bookshelf"],
+    "Objection": ["objection"],
+    "MikroORM": ["@mikro-orm/*"],
+    "Waterline": ["waterline"],
+    "Massive": ["massive"],
+    "Slonik": ["slonik"],
+    "pg": ["pg"],
+    "mysql": ["mysql", "mysql2"],
+    "better-sqlite3": ["better-sqlite3"],
+    "sqlite3": ["sqlite3"],
+    "mongodb": ["mongodb"],
+    "redis": ["redis", "ioredis"],
+    "elasticsearch": ["@elastic/elasticsearch"]
   },
   "Utilities": {
-    "Lodash": ["lodash", "lodash-es"],
+    "Lodash": ["lodash", "lodash-es", "lodash.*"],
     "Ramda": ["ramda"],
     "Day.js": ["dayjs"],
-    "Moment.js": ["moment"],
+    "Moment.js": ["moment", "moment-timezone"],
     "date-fns": ["date-fns"],
     "Zod": ["zod"],
-    "Yup": ["yup"]
+    "Yup": ["yup"],
+    "Joi": ["joi"],
+    "Ajv": ["ajv"],
+    "Validator": ["validator"],
+    "Nanoid": ["nanoid"],
+    "UUID": ["uuid"],
+    "ShortID": ["shortid"],
+    "classnames": ["classnames", "clsx"],
+    "Immer": ["immer"],
+    "Immutable": ["immutable"],
+    "RxJS": ["rxjs"],
+    "Async": ["async"],
+    "Bluebird": ["bluebird"],
+    "P-Limit": ["p-limit"],
+    "P-Queue": ["p-queue"],
+    "Dotenv": ["dotenv"],
+    "Config": ["config"],
+    "Commander": ["commander"],
+    "Inquirer": ["inquirer"],
+    "Chalk": ["chalk"],
+    "Ora": ["ora"],
+    "Listr": ["listr", "listr2"],
+    "Execa": ["execa"],
+    "Globby": ["globby"],
+    "Fast-Glob": ["fast-glob"],
+    "Chokidar": ["chokidar"],
+    "Nodemon": ["nodemon"],
+    "PM2": ["pm2"],
+    "Concurrently": ["concurrently"],
+    "Cross-Env": ["cross-env"],
+    "Rimraf": ["rimraf"],
+    "mkdirp": ["mkdirp"],
+    "fs-extra": ["fs-extra"],
+    "Semver": ["semver"],
+    "Debug": ["debug"],
+    "ms": ["ms"],
+    "Pluralize": ["pluralize"],
+    "Inflection": ["inflection"],
+    "Humps": ["humps"],
+    "Change-Case": ["change-case"],
+    "Sanitize-HTML": ["sanitize-html"],
+    "DOMPurify": ["dompurify", "isomorphic-dompurify"],
+    "He": ["he"],
+    "Query-String": ["query-string", "qs"],
+    "Superstruct": ["superstruct"],
+    "Luxon": ["luxon"],
+    "Math.js": ["mathjs"],
+    "Decimal.js": ["decimal.js"],
+    "Big.js": ["big.js"],
+    "Numeral": ["numeral"],
+    "Chart.js": ["chart.js"],
+    "D3": ["d3", "d3-*"],
+    "Three.js": ["three"],
+    "P5.js": ["p5"],
+    "PixiJS": ["pixi.js"],
+    "Konva": ["konva", "react-konva"],
+    "Fabric": ["fabric"],
+    "PaperjS": ["paper"],
+    "Marked": ["marked"],
+    "Showdown": ["showdown"],
+    "Turndown": ["turndown"],
+    "Gray-Matter": ["gray-matter"],
+    "Remark": ["remark", "remark-*"],
+    "Rehype": ["rehype", "rehype-*"],
+    "Unified": ["unified"],
+    "PDF-Lib": ["pdf-lib"],
+    "PDFKit": ["pdfkit"],
+    "JSZip": ["jszip"],
+    "Sharp": ["sharp"],
+    "Jimp": ["jimp"],
+    "QRCode": ["qrcode"],
+    "Bcrypt": ["bcrypt", "bcryptjs"],
+    "Argon2": ["argon2"],
+    "Crypto-JS": ["crypto-js"],
+    "Node-Forge": ["node-forge"],
+    "Jose": ["jose"],
+    "Multer": ["multer"],
+    "Formidable": ["formidable"],
+    "Busboy": ["busboy"],
+    "Cookie-Parser": ["cookie-parser"],
+    "Body-Parser": ["body-parser"],
+    "Compression": ["compression"],
+    "Helmet": ["helmet"],
+    "CORS": ["cors"],
+    "Morgan": ["morgan"],
+    "Winston": ["winston"],
+    "Pino": ["pino"],
+    "Bunyan": ["bunyan"],
+    "Log4js": ["log4js"],
+    "i18next": ["i18next", "react-i18next"],
+    "React Intl": ["react-intl"],
+    "Polyglot": ["node-polyglot"],
+    "Yargs": ["yargs"],
+    "Minimist": ["minimist"],
+    "Meow": ["meow"],
+    "Cac": ["cac"],
+    "Prompt": ["prompt"],
+    "Prompts": ["prompts"]
   },
   "Animation": {
     "Framer Motion": ["framer-motion"],
     "React Spring": ["react-spring"],
-    "GSAP": ["gsap"]
+    "GSAP": ["gsap"],
+    "Anime.js": ["animejs"],
+    "Velocity": ["velocity-animate"],
+    "Mo.js": ["@mojs/core"],
+    "Popmotion": ["popmotion"],
+    "React Transition Group": ["react-transition-group"],
+    "React Move": ["react-move"],
+    "Auto-Animate": ["@formkit/auto-animate"],
+    "Lottie": ["lottie-web", "react-lottie"]
   },
   "Forms": {
     "React Hook Form": ["react-hook-form"],
-    "Formik": ["formik"]
+    "Formik": ["formik"],
+    "React Final Form": ["react-final-form", "final-form"],
+    "Informed": ["informed"],
+    "Redux Form": ["redux-form"],
+    "Unform": ["@unform/*"],
+    "Vest": ["vest"]
   },
   "Routing": {
     "React Router": ["react-router", "react-router-dom"],
-    "TanStack Router": ["@tanstack/react-router"]
+    "TanStack Router": ["@tanstack/react-router"],
+    "Vue Router": ["vue-router"],
+    "Wouter": ["wouter"],
+    "Reach Router": ["@reach/router"],
+    "Found": ["found"],
+    "Universal Router": ["universal-router"],
+    "Navigo": ["navigo"],
+    "Page.js": ["page"],
+    "Director": ["director"]
+  },
+  "Desktop": {
+    "Electron": ["electron", "electron-*"],
+    "Tauri": ["@tauri-apps/*"],
+    "NW.js": ["nw"],
+    "Neutralino": ["@neutralinojs/*"]
+  },
+  "Mobile": {
+    "React Native": ["react-native", "react-native-*"],
+    "Expo": ["expo", "expo-*"],
+    "Ionic": ["@ionic/*"],
+    "Capacitor": ["@capacitor/*"],
+    "Cordova": ["cordova", "cordova-*"],
+    "NativeScript": ["@nativescript/*"]
+  },
+  "Real-time": {
+    "Socket.io": ["socket.io", "socket.io-client"],
+    "WS": ["ws"],
+    "uWebSockets": ["uwebsockets-js"],
+    "Pusher": ["pusher", "pusher-js"],
+    "Ably": ["ably"],
+    "PeerJS": ["peerjs"],
+    "Simple-Peer": ["simple-peer"],
+    "WebRTC": ["webrtc"]
+  },
+  "Data Visualization": {
+    "Recharts": ["recharts"],
+    "Victory": ["victory"],
+    "Nivo": ["@nivo/*"],
+    "Visx": ["@visx/*"],
+    "React-Vis": ["react-vis"],
+    "Plotly": ["plotly.js", "react-plotly.js"],
+    "ECharts": ["echarts", "echarts-for-react"],
+    "Highcharts": ["highcharts", "highcharts-react-official"],
+    "ApexCharts": ["apexcharts", "react-apexcharts"],
+    "Vega": ["vega", "vega-lite", "react-vega"]
+  },
+  "Maps": {
+    "Leaflet": ["leaflet", "react-leaflet"],
+    "Mapbox": ["mapbox-gl", "react-map-gl"],
+    "Google Maps": ["@react-google-maps/*", "@googlemaps/*"],
+    "OpenLayers": ["ol", "rlayers"],
+    "Deck.gl": ["deck.gl"]
+  },
+  "Date Pickers": {
+    "React DatePicker": ["react-datepicker"],
+    "React Day Picker": ["react-day-picker"],
+    "React Dates": ["react-dates"],
+    "Material UI Pickers": ["@mui/x-date-pickers"]
+  },
+  "Tables": {
+    "TanStack Table": ["@tanstack/react-table", "@tanstack/table-core"],
+    "AG Grid": ["ag-grid-*"],
+    "React Table": ["react-table"],
+    "Material Table": ["@material-table/*"],
+    "React Data Grid": ["react-data-grid"]
+  },
+  "Drag & Drop": {
+    "dnd-kit": ["@dnd-kit/*"],
+    "React DnD": ["react-dnd", "react-dnd-html5-backend"],
+    "React Beautiful DnD": ["react-beautiful-dnd"],
+    "React Sortable HOC": ["react-sortable-hoc"],
+    "SortableJS": ["sortablejs", "react-sortablejs"],
+    "Dragula": ["dragula", "react-dragula"]
+  },
+  "Rich Text Editors": {
+    "Slate": ["slate", "slate-react"],
+    "Draft.js": ["draft-js"],
+    "Lexical": ["lexical", "@lexical/*"],
+    "TipTap": ["@tiptap/*"],
+    "Quill": ["quill", "react-quill"],
+    "CKEditor": ["@ckeditor/*"],
+    "TinyMCE": ["tinymce"],
+    "ProseMirror": ["prosemirror-*"],
+    "Medium Editor": ["medium-editor"],
+    "Froala": ["froala-editor"]
+  },
+  "File Upload": {
+    "React Dropzone": ["react-dropzone"],
+    "Uppy": ["@uppy/*"],
+    "Filepond": ["filepond", "react-filepond"],
+    "Dropzone": ["dropzone"],
+    "Fine Uploader": ["fine-uploader"]
+  },
+  "Notifications": {
+    "React Toastify": ["react-toastify"],
+    "React Hot Toast": ["react-hot-toast"],
+    "Notistack": ["notistack"],
+    "Sonner": ["sonner"],
+    "Notyf": ["notyf"],
+    "Toastr": ["toastr"],
+    "iziToast": ["izitoast"]
+  },
+  "Modals": {
+    "React Modal": ["react-modal"],
+    "Headless UI": ["@headlessui/react"],
+    "Rodal": ["rodal"],
+    "Sweetalert2": ["sweetalert2"]
+  },
+  "Carousels": {
+    "Swiper": ["swiper"],
+    "React Slick": ["react-slick", "slick-carousel"],
+    "Embla Carousel": ["embla-carousel", "embla-carousel-react"],
+    "Keen Slider": ["keen-slider"],
+    "Flickity": ["flickity"]
+  },
+  "Auth": {
+    "NextAuth": ["next-auth"],
+    "Passport": ["passport", "passport-*"],
+    "Auth0": ["auth0", "@auth0/*"],
+    "Firebase Auth": ["firebase", "@firebase/*"],
+    "Supabase": ["@supabase/*"],
+    "Clerk": ["@clerk/*"],
+    "Lucia": ["lucia"],
+    "Iron Session": ["iron-session"],
+    "JWT": ["jsonwebtoken"],
+    "Express JWT": ["express-jwt"],
+    "Express Session": ["express-session"],
+    "Cookie-Session": ["cookie-session"]
+  },
+  "CMS": {
+    "Strapi": ["@strapi/*"],
+    "Sanity": ["@sanity/*"],
+    "Contentful": ["contentful"],
+    "Payload": ["payload"],
+    "KeystoneJS": ["@keystone-6/*"],
+    "Ghost": ["@tryghost/*"],
+    "Directus": ["@directus/*"]
+  },
+  "Deployment": {
+    "Vercel": ["vercel"],
+    "Netlify": ["netlify-cli"],
+    "AWS Amplify": ["@aws-amplify/*"],
+    "Railway": ["@railway/*"],
+    "Render": ["render"],
+    "Serverless": ["serverless", "serverless-*"]
+  },
+  "Monorepo": {
+    "Turborepo": ["turbo"],
+    "Nx": ["nx", "@nx/*"],
+    "Lerna": ["lerna"],
+    "pnpm": ["pnpm"],
+    "Yarn Workspaces": ["yarn"],
+    "Rush": ["@microsoft/rush"]
+  },
+  "Documentation": {
+    "Storybook": ["@storybook/*", "storybook"],
+    "Docusaurus": ["@docusaurus/*"],
+    "VitePress": ["vitepress"],
+    "Nextra": ["nextra"],
+    "Styleguidist": ["react-styleguidist"],
+    "JSDoc": ["jsdoc"],
+    "TypeDoc": ["typedoc"],
+    "Documentation.js": ["documentation"]
+  },
+  "Accessibility": {
+    "React Aria": ["react-aria", "@react-aria/*"],
+    "Reach UI": ["@reach/*"],
+    "Reakit": ["reakit"],
+    "Downshift": ["downshift"],
+    "React A11y": ["react-a11y"],
+    "jsx-a11y": ["eslint-plugin-jsx-a11y"]
+  },
+  "Internationalization": {
+    "i18next": ["i18next", "react-i18next", "next-i18next"],
+    "React Intl": ["react-intl"],
+    "FormatJS": ["@formatjs/*"],
+    "Lingui": ["@lingui/*"],
+    "Polyglot": ["node-polyglot"],
+    "Typesafe-i18n": ["typesafe-i18n"]
+  },
+  "SEO": {
+    "Next SEO": ["next-seo"],
+    "React Helmet": ["react-helmet", "react-helmet-async"],
+    "React Snap": ["react-snap"],
+    "Prerender": ["prerender-node"]
+  },
+  "Analytics": {
+    "Google Analytics": ["react-ga", "react-ga4"],
+    "Mixpanel": ["mixpanel-browser"],
+    "Segment": ["@segment/analytics-next"],
+    "PostHog": ["posthog-js"],
+    "Plausible": ["plausible-tracker"],
+    "Umami": ["@umami/node"]
+  },
+  "Error Tracking": {
+    "Sentry": ["@sentry/*"],
+    "Bugsnag": ["@bugsnag/*"],
+    "Rollbar": ["rollbar"],
+    "LogRocket": ["logrocket"],
+    "TrackJS": ["trackjs"]
+  },
+  "Performance": {
+    "Web Vitals": ["web-vitals"],
+    "React Window": ["react-window"],
+    "React Virtualized": ["react-virtualized"],
+    "React Virtual": ["@tanstack/react-virtual"],
+    "Loadable Components": ["@loadable/component"],
+    "React Lazyload": ["react-lazyload"],
+    "LazySizes": ["lazysizes"]
+  },
+  "Code Splitting": {
+    "Loadable Components": ["@loadable/component"],
+    "React Loadable": ["react-loadable"],
+    "Dynamic Import": ["@babel/plugin-syntax-dynamic-import"]
+  },
+  "Service Workers": {
+    "Workbox": ["workbox-*"],
+    "Next PWA": ["next-pwa"],
+    "Vite PWA": ["vite-plugin-pwa"]
+  },
+  "Email": {
+    "Nodemailer": ["nodemailer"],
+    "SendGrid": ["@sendgrid/mail"],
+    "Mailgun": ["mailgun-js"],
+    "React Email": ["@react-email/*"],
+    "MJML": ["mjml", "mjml-react"],
+    "Postmark": ["postmark"]
+  },
+  "Payments": {
+    "Stripe": ["stripe", "@stripe/stripe-js", "@stripe/react-stripe-js"],
+    "PayPal": ["@paypal/*"],
+    "Square": ["square"]
+  },
+  "Search": {
+    "Algolia": ["algoliasearch", "react-instantsearch"],
+    "MeiliSearch": ["meilisearch"],
+    "Fuse.js": ["fuse.js"],
+    "Lunr": ["lunr"],
+    "Flexsearch": ["flexsearch"],
+    "Minisearch": ["minisearch"]
+  },
+  "Media": {
+    "Video.js": ["video.js"],
+    "Plyr": ["plyr"],
+    "React Player": ["react-player"],
+    "Howler": ["howler"],
+    "WaveSurfer": ["wavesurfer.js"],
+    "Tone.js": ["tone"]
+  },
+  "PDF": {
+    "React PDF": ["@react-pdf/renderer", "react-pdf"],
+    "PDF.js": ["pdfjs-dist"],
+    "jsPDF": ["jspdf"],
+    "PDF-Lib": ["pdf-lib"],
+    "PDFKit": ["pdfkit"]
+  },
+  "Blockchain": {
+    "Web3.js": ["web3"],
+    "Ethers.js": ["ethers"],
+    "Wagmi": ["wagmi"],
+    "RainbowKit": ["@rainbow-me/rainbowkit"],
+    "Web3Modal": ["web3modal"]
+  },
+  "Machine Learning": {
+    "TensorFlow.js": ["@tensorflow/tfjs"],
+    "Brain.js": ["brain.js"],
+    "ML5": ["ml5"],
+    "Synaptic": ["synaptic"]
   }
 }

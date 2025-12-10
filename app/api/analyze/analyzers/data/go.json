@@ -5,7 +5,14 @@
     "Fiber": ["github.com/gofiber/fiber", "github.com/gofiber/fiber/*"],
     "Chi": ["github.com/go-chi/chi", "github.com/go-chi/chi/*"],
     "Gorilla Mux": ["github.com/gorilla/mux"],
-    "Beego": ["github.com/beego/beego", "github.com/beego/beego/*"]
+    "Beego": ["github.com/beego/beego", "github.com/beego/beego/*"],
+    "Revel": ["github.com/revel/revel"],
+    "Buffalo": ["github.com/gobuffalo/buffalo"],
+    "Martini": ["github.com/go-martini/martini"],
+    "Iris": ["github.com/kataras/iris", "github.com/kataras/iris/*"],
+    "Mux": ["github.com/gorilla/mux"],
+    "httprouter": ["github.com/julienschmidt/httprouter"],
+    "fasthttp": ["github.com/valyala/fasthttp"]
   },
   "Database & ORM": {
     "GORM": ["gorm.io/gorm", "gorm.io/driver/*"],
@@ -13,34 +20,306 @@
     "sqlx": ["github.com/jmoiron/sqlx"],
     "go-sql-driver": ["github.com/go-sql-driver/mysql"],
     "mongo-go-driver": ["go.mongodb.org/mongo-driver", "go.mongodb.org/mongo-driver/*"],
-    "go-redis": ["github.com/go-redis/redis", "github.com/go-redis/redis/*"]
+    "go-redis": ["github.com/go-redis/redis", "github.com/go-redis/redis/*", "github.com/redis/go-redis", "github.com/redis/go-redis/*"],
+    "ent": ["entgo.io/ent", "entgo.io/ent/*"],
+    "sqlc": ["github.com/kyleconroy/sqlc"],
+    "sqlboiler": ["github.com/volatiletech/sqlboiler", "github.com/volatiletech/sqlboiler/*"],
+    "bun": ["github.com/uptrace/bun", "github.com/uptrace/bun/*"],
+    "xorm": ["xorm.io/xorm"],
+    "gocql": ["github.com/gocql/gocql"],
+    "badger": ["github.com/dgraph-io/badger", "github.com/dgraph-io/badger/*"],
+    "bbolt": ["go.etcd.io/bbolt"],
+    "leveldb": ["github.com/syndtr/goleveldb"],
+    "squirrel": ["github.com/Masterminds/squirrel"],
+    "goqu": ["github.com/doug-martin/goqu", "github.com/doug-martin/goqu/*"],
+    "pg": ["github.com/go-pg/pg", "github.com/go-pg/pg/*"],
+    "pq": ["github.com/lib/pq"]
   },
   "Testing": {
     "Testify": ["github.com/stretchr/testify", "github.com/stretchr/testify/*"],
     "Ginkgo": ["github.com/onsi/ginkgo", "github.com/onsi/ginkgo/*"],
     "Gomega": ["github.com/onsi/gomega", "github.com/onsi/gomega/*"],
-    "GoMock": ["github.com/golang/mock", "github.com/golang/mock/*"]
+    "GoMock": ["github.com/golang/mock", "github.com/golang/mock/*", "go.uber.org/mock", "go.uber.org/mock/*"],
+    "httptest": ["net/http/httptest"],
+    "gomock": ["github.com/golang/mock/gomock"],
+    "testcontainers": ["github.com/testcontainers/testcontainers-go"],
+    "gocheck": ["gopkg.in/check.v1"],
+    "goconvey": ["github.com/smartystreets/goconvey"],
+    "goblin": ["github.com/franela/goblin"],
+    "godog": ["github.com/cucumber/godog"],
+    "counterfeiter": ["github.com/maxbrunsfeld/counterfeiter"],
+    "httpmock": ["github.com/jarcoal/httpmock"],
+    "gofakeit": ["github.com/brianvoe/gofakeit", "github.com/brianvoe/gofakeit/*"]
   },
   "Logging": {
     "Logrus": ["github.com/sirupsen/logrus"],
     "Zap": ["go.uber.org/zap", "go.uber.org/zap/*"],
-    "Zerolog": ["github.com/rs/zerolog", "github.com/rs/zerolog/*"]
+    "Zerolog": ["github.com/rs/zerolog", "github.com/rs/zerolog/*"],
+    "log": ["log"],
+    "slog": ["golang.org/x/exp/slog", "log/slog"],
+    "apex/log": ["github.com/apex/log"],
+    "glog": ["github.com/golang/glog"],
+    "loggo": ["github.com/juju/loggo"]
   },
-  "HTTP/API": {
+  "HTTP Client": {
     "Resty": ["github.com/go-resty/resty", "github.com/go-resty/resty/*"],
+    "req": ["github.com/imroc/req", "github.com/imroc/req/*"],
+    "gentleman": ["github.com/h2non/gentleman"],
+    "heimdall": ["github.com/gojek/heimdall", "github.com/gojek/heimdall/*"],
+    "go-http-client": ["github.com/bozd4g/go-http-client"],
+    "sling": ["github.com/dghubble/sling"]
+  },
+  "CLI Tools": {
     "Cobra": ["github.com/spf13/cobra"],
+    "urfave/cli": ["github.com/urfave/cli", "github.com/urfave/cli/*"],
+    "kingpin": ["github.com/alecthomas/kingpin", "github.com/alecthomas/kingpin/*"],
+    "cli": ["github.com/mitchellh/cli"],
+    "ishell": ["github.com/abiosoft/ishell"],
+    "promptui": ["github.com/manifoldco/promptui"],
+    "bubbletea": ["github.com/charmbracelet/bubbletea"],
+    "lipgloss": ["github.com/charmbracelet/lipgloss"],
+    "glamour": ["github.com/charmbracelet/glamour"],
+    "survey": ["github.com/AlecAivazis/survey", "github.com/AlecAivazis/survey/*"],
+    "color": ["github.com/fatih/color"],
+    "termui": ["github.com/gizak/termui", "github.com/gizak/termui/*"],
+    "tablewriter": ["github.com/olekukonko/tablewriter"],
+    "go-flags": ["github.com/jessevdk/go-flags"]
+  },
+  "Configuration": {
     "Viper": ["github.com/spf13/viper"],
+    "envconfig": ["github.com/kelseyhightower/envconfig"],
+    "godotenv": ["github.com/joho/godotenv"],
+    "koanf": ["github.com/knadh/koanf", "github.com/knadh/koanf/*"],
+    "cleanenv": ["github.com/ilyakaznacheev/cleanenv"],
+    "config": ["github.com/golobby/config"],
+    "ini": ["gopkg.in/ini.v1"]
+  },
+  "Validation": {
+    "validator": ["github.com/go-playground/validator", "github.com/go-playground/validator/*"],
+    "ozzo-validation": ["github.com/go-ozzo/ozzo-validation", "github.com/go-ozzo/ozzo-validation/*"],
+    "govalidator": ["github.com/asaskevich/govalidator"],
+    "checkmail": ["github.com/badoux/checkmail"]
+  },
+  "gRPC": {
     "gRPC": ["google.golang.org/grpc", "google.golang.org/grpc/*"],
-    "protobuf": ["google.golang.org/protobuf", "google.golang.org/protobuf/*"]
+    "protobuf": ["google.golang.org/protobuf", "google.golang.org/protobuf/*"],
+    "grpc-gateway": ["github.com/grpc-ecosystem/grpc-gateway", "github.com/grpc-ecosystem/grpc-gateway/*"],
+    "go-grpc-middleware": ["github.com/grpc-ecosystem/go-grpc-middleware", "github.com/grpc-ecosystem/go-grpc-middleware/*"],
+    "protoc-gen-go": ["google.golang.org/protobuf/cmd/protoc-gen-go"],
+    "protoc-gen-go-grpc": ["google.golang.org/grpc/cmd/protoc-gen-go-grpc"]
+  },
+  "GraphQL": {
+    "gqlgen": ["github.com/99designs/gqlgen", "github.com/99designs/gqlgen/*"],
+    "graphql-go": ["github.com/graphql-go/graphql"],
+    "graphql": ["github.com/graph-gophers/graphql-go"]
+  },
+  "Messaging & Queuing": {
+    "Kafka": ["github.com/segmentio/kafka-go", "github.com/Shopify/sarama"],
+    "RabbitMQ": ["github.com/streadway/amqp", "github.com/rabbitmq/amqp091-go"],
+    "NATS": ["github.com/nats-io/nats.go"],
+    "Redis Streams": ["github.com/go-redis/redis", "github.com/redis/go-redis"],
+    "NSQ": ["github.com/nsqio/go-nsq"],
+    "Watermill": ["github.com/ThreeDotsLabs/watermill", "github.com/ThreeDotsLabs/watermill/*"],
+    "machinery": ["github.com/RichardKnop/machinery", "github.com/RichardKnop/machinery/*"],
+    "asynq": ["github.com/hibiken/asynq"]
+  },
+  "WebSocket": {
+    "Gorilla WebSocket": ["github.com/gorilla/websocket"],
+    "Melody": ["github.com/olahol/melody"],
+    "websocket": ["golang.org/x/net/websocket"],
+    "gobwas/ws": ["github.com/gobwas/ws", "github.com/gobwas/ws/*"],
+    "nhooyr.io/websocket": ["nhooyr.io/websocket"]
+  },
+  "Authentication & Authorization": {
+    "JWT": ["github.com/golang-jwt/jwt", "github.com/golang-jwt/jwt/*", "github.com/dgrijalva/jwt-go"],
+    "OAuth2": ["golang.org/x/oauth2", "golang.org/x/oauth2/*"],
+    "Casbin": ["github.com/casbin/casbin", "github.com/casbin/casbin/*"],
+    "Authboss": ["github.com/volatiletech/authboss", "github.com/volatiletech/authboss/*"],
+    "Paseto": ["github.com/o1egl/paseto"],
+    "go-guardian": ["github.com/shaj13/go-guardian", "github.com/shaj13/go-guardian/*"],
+    "session": ["github.com/gorilla/sessions"]
+  },
+  "Caching": {
+    "go-cache": ["github.com/patrickmn/go-cache"],
+    "bigcache": ["github.com/allegro/bigcache", "github.com/allegro/bigcache/*"],
+    "freecache": ["github.com/coocood/freecache"],
+    "groupcache": ["github.com/golang/groupcache"],
+    "ristretto": ["github.com/dgraph-io/ristretto"]
+  },
+  "Serialization": {
+    "JSON": ["encoding/json"],
+    "jsoniter": ["github.com/json-iterator/go"],
+    "easyjson": ["github.com/mailru/easyjson"],
+    "YAML": ["gopkg.in/yaml.v3", "gopkg.in/yaml.v2"],
+    "TOML": ["github.com/BurntSushi/toml"],
+    "msgpack": ["github.com/vmihailenco/msgpack", "github.com/vmihailenco/msgpack/*"],
+    "protobuf": ["google.golang.org/protobuf/*"],
+    "gob": ["encoding/gob"],
+    "mapstructure": ["github.com/mitchellh/mapstructure"]
   },
   "Utilities": {
     "UUID": ["github.com/google/uuid"],
-    "Cast": ["github.com/spf123/cast"],
-    "Validator": ["github.com/go-playground/validator", "github.com/go-playground/validator/*"]
+    "Cast": ["github.com/spf13/cast"],
+    "go-funk": ["github.com/thoas/go-funk"],
+    "lo": ["github.com/samber/lo"],
+    "copier": ["github.com/jinzhu/copier"],
+    "mergo": ["github.com/imdario/mergo"],
+    "go-difflib": ["github.com/pmezard/go-difflib"],
+    "cast": ["github.com/spf13/cast"],
+    "now": ["github.com/jinzhu/now"],
+    "goutils": ["github.com/Masterminds/goutils"]
+  },
+  "HTTP Router": {
+    "mux": ["github.com/gorilla/mux"],
+    "httprouter": ["github.com/julienschmidt/httprouter"],
+    "chi": ["github.com/go-chi/chi", "github.com/go-chi/chi/*"],
+    "bone": ["github.com/go-zoo/bone"],
+    "pat": ["github.com/bmizerany/pat"]
+  },
+  "Middleware": {
+    "CORS": ["github.com/rs/cors"],
+    "handlers": ["github.com/gorilla/handlers"],
+    "negroni": ["github.com/urfave/negroni"],
+    "alice": ["github.com/justinas/alice"],
+    "tollbooth": ["github.com/didip/tollbooth", "github.com/didip/tollbooth/*"]
+  },
+  "Template Engines": {
+    "html/template": ["html/template"],
+    "text/template": ["text/template"],
+    "pongo2": ["github.com/flosch/pongo2", "github.com/flosch/pongo2/*"],
+    "raymond": ["github.com/aymerick/raymond"],
+    "jet": ["github.com/CloudyKit/jet", "github.com/CloudyKit/jet/*"],
+    "quicktemplate": ["github.com/valyala/quicktemplate"]
+  },
+  "Email": {
+    "gomail": ["gopkg.in/gomail.v2"],
+    "mail": ["github.com/jordan-wright/email"],
+    "email": ["github.com/jordan-wright/email"],
+    "hermes": ["github.com/matcornic/hermes", "github.com/matcornic/hermes/*"],
+    "mailgun-go": ["github.com/mailgun/mailgun-go", "github.com/mailgun/mailgun-go/*"]
+  },
+  "File Processing": {
+    "afero": ["github.com/spf13/afero"],
+    "excelize": ["github.com/xuri/excelize", "github.com/xuri/excelize/*"],
+    "imaging": ["github.com/disintegration/imaging"],
+    "go-pdf": ["github.com/jung-kurt/gofpdf"],
+    "pdfcpu": ["github.com/pdfcpu/pdfcpu"]
   },
   "Cloud & Infrastructure": {
-    "AWS SDK": ["github.com/aws/aws-sdk-go", "github.com/aws/aws-sdk-go/*"],
+    "AWS SDK": ["github.com/aws/aws-sdk-go", "github.com/aws/aws-sdk-go/*", "github.com/aws/aws-sdk-go-v2", "github.com/aws/aws-sdk-go-v2/*"],
     "Kubernetes": ["k8s.io/client-go", "k8s.io/api", "k8s.io/apimachinery", "k8s.io/*"],
-    "Docker": ["github.com/docker/docker", "github.com/docker/docker/*"]
+    "Docker": ["github.com/docker/docker", "github.com/docker/docker/*"],
+    "Terraform": ["github.com/hashicorp/terraform", "github.com/hashicorp/terraform/*"],
+    "Consul": ["github.com/hashicorp/consul", "github.com/hashicorp/consul/*"],
+    "Vault": ["github.com/hashicorp/vault", "github.com/hashicorp/vault/*"],
+    "etcd": ["go.etcd.io/etcd", "go.etcd.io/etcd/*"],
+    "Azure SDK": ["github.com/Azure/azure-sdk-for-go", "github.com/Azure/azure-sdk-for-go/*"],
+    "GCP SDK": ["cloud.google.com/go", "cloud.google.com/go/*"],
+    "Prometheus": ["github.com/prometheus/client_golang", "github.com/prometheus/client_golang/*"],
+    "OpenTelemetry": ["go.opentelemetry.io/otel", "go.opentelemetry.io/otel/*"],
+    "Jaeger": ["github.com/jaegertracing/jaeger", "github.com/jaegertracing/jaeger/*"]
+  },
+  "Microservices": {
+    "go-micro": ["github.com/asim/go-micro", "github.com/asim/go-micro/*", "go-micro.dev/v4"],
+    "go-kit": ["github.com/go-kit/kit", "github.com/go-kit/kit/*", "github.com/go-kit/log"],
+    "Kratos": ["github.com/go-kratos/kratos", "github.com/go-kratos/kratos/*"],
+    "Istio": ["istio.io/api", "istio.io/client-go"]
+  },
+  "Rate Limiting": {
+    "rate": ["golang.org/x/time/rate"],
+    "tollbooth": ["github.com/didip/tollbooth", "github.com/didip/tollbooth/*"],
+    "ratelimit": ["go.uber.org/ratelimit"],
+    "limiter": ["github.com/ulule/limiter", "github.com/ulule/limiter/*"]
+  },
+  "Concurrency": {
+    "errgroup": ["golang.org/x/sync/errgroup"],
+    "semaphore": ["golang.org/x/sync/semaphore"],
+    "ants": ["github.com/panjf2000/ants", "github.com/panjf2000/ants/*"],
+    "workerpool": ["github.com/gammazero/workerpool"],
+    "tunny": ["github.com/Jeffail/tunny"],
+    "pond": ["github.com/alitto/pond"]
+  },
+  "Security & Crypto": {
+    "crypto": ["crypto", "crypto/*", "golang.org/x/crypto", "golang.org/x/crypto/*"],
+    "bcrypt": ["golang.org/x/crypto/bcrypt"],
+    "argon2": ["golang.org/x/crypto/argon2"],
+    "tls": ["crypto/tls"],
+    "acme": ["golang.org/x/crypto/acme", "golang.org/x/crypto/acme/*"],
+    "lets-encrypt": ["github.com/go-acme/lego", "github.com/go-acme/lego/*"],
+    "secure": ["github.com/unrolled/secure"]
+  },
+  "Data Processing": {
+    "gonum": ["gonum.org/v1/gonum", "gonum.org/v1/gonum/*"],
+    "gota": ["github.com/go-gota/gota"],
+    "gocsv": ["github.com/gocarina/gocsv"],
+    "csvutil": ["github.com/jszwec/csvutil"],
+    "structs": ["github.com/fatih/structs"]
+  },
+  "Web Scraping": {
+    "colly": ["github.com/gocolly/colly", "github.com/gocolly/colly/*"],
+    "goquery": ["github.com/PuerkitoBio/goquery"],
+    "chromedp": ["github.com/chromedp/chromedp"],
+    "rod": ["github.com/go-rod/rod"]
+  },
+  "Networking": {
+    "net": ["net", "net/*"],
+    "net/http": ["net/http"],
+    "quic-go": ["github.com/lucas-clemente/quic-go"],
+    "ssh": ["golang.org/x/crypto/ssh"],
+    "sftp": ["github.com/pkg/sftp"]
+  },
+  "Compression": {
+    "gzip": ["compress/gzip"],
+    "snappy": ["github.com/golang/snappy"],
+    "lz4": ["github.com/pierrec/lz4", "github.com/pierrec/lz4/*"],
+    "zstd": ["github.com/klauspost/compress", "github.com/klauspost/compress/*"]
+  },
+  "Image Processing": {
+    "imaging": ["github.com/disintegration/imaging"],
+    "bimg": ["github.com/h2non/bimg"],
+    "resize": ["github.com/nfnt/resize"],
+    "gg": ["github.com/fogleman/gg"],
+    "gift": ["github.com/disintegration/gift"]
+  },
+  "Machine Learning": {
+    "golearn": ["github.com/sjwhitworth/golearn"],
+    "gorgonia": ["gorgonia.org/gorgonia"],
+    "goml": ["github.com/cdipaolo/goml"],
+    "tensorflow": ["github.com/tensorflow/tensorflow/tensorflow/go"]
+  },
+  "Time & Date": {
+    "now": ["github.com/jinzhu/now"],
+    "carbon": ["github.com/golang-module/carbon", "github.com/golang-module/carbon/*"],
+    "timeutil": ["github.com/leekchan/timeutil"],
+    "dateparse": ["github.com/araddon/dateparse"]
+  },
+  "Error Handling": {
+    "errors": ["errors", "github.com/pkg/errors"],
+    "errwrap": ["github.com/hashicorp/errwrap"],
+    "multierr": ["go.uber.org/multierr"],
+    "emperror": ["emperror.dev/errors"]
+  },
+  "Build Tools": {
+    "cobra": ["github.com/spf13/cobra"],
+    "make": ["github.com/magefile/mage"],
+    "task": ["github.com/go-task/task", "github.com/go-task/task/*"]
+  },
+  "API Documentation": {
+    "Swagger": ["github.com/swaggo/swag", "github.com/swaggo/swag/*", "github.com/swaggo/gin-swagger", "github.com/swaggo/echo-swagger", "github.com/swaggo/fiber-swagger"],
+    "go-swagger": ["github.com/go-swagger/go-swagger"]
+  },
+  "Monitoring & Metrics": {
+    "Prometheus": ["github.com/prometheus/client_golang", "github.com/prometheus/client_golang/*"],
+    "OpenTelemetry": ["go.opentelemetry.io/otel", "go.opentelemetry.io/otel/*"],
+    "Sentry": ["github.com/getsentry/sentry-go"],
+    "New Relic": ["github.com/newrelic/go-agent", "github.com/newrelic/go-agent/*"],
+    "DataDog": ["github.com/DataDog/dd-trace-go", "github.com/DataDog/dd-trace-go/*"],
+    "statsd": ["github.com/cactus/go-statsd-client"]
+  },
+  "Code Generation": {
+    "wire": ["github.com/google/wire", "github.com/google/wire/*"],
+    "mockgen": ["github.com/golang/mock/mockgen"],
+    "stringer": ["golang.org/x/tools/cmd/stringer"],
+    "genny": ["github.com/cheekybits/genny"]
   }
 }
