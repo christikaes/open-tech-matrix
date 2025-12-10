@@ -7,6 +7,21 @@ import Link from "next/link";
 
 // Simple TechRadarMatrix component for now
 function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: string }) {
+  // Group technologies by category
+  const groupByCategory = (items: typeof data.adopt) => {
+    const grouped = new Map<string, typeof data.adopt>();
+    items.forEach(item => {
+      if (!grouped.has(item.category)) {
+        grouped.set(item.category, []);
+      }
+      grouped.get(item.category)!.push(item);
+    });
+    return grouped;
+  };
+
+  const adoptByCategory = groupByCategory(data.adopt);
+  const removeByCategory = groupByCategory(data.remove);
+
   return (
     <div className="p-8">
       <div className="rounded-lg bg-white p-8 shadow-lg">
@@ -18,7 +33,7 @@ function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: st
             <thead>
               <tr className="bg-teal-100">
                 <th className="border border-teal-300 px-4 py-2 text-left font-bold text-teal-900">
-                  Technology
+                  Category
                 </th>
                 <th className="border border-teal-300 px-4 py-2 font-bold text-teal-900">Assess</th>
                 <th className="border border-teal-300 px-4 py-2 font-bold text-teal-900">Trial</th>
@@ -28,84 +43,63 @@ function TechRadarMatrix({ data, repoUrl }: { data: TechMatrixData; repoUrl?: st
               </tr>
             </thead>
             <tbody>
-              <tr className="hover:bg-teal-50">
-                <td className="border border-teal-200 px-4 py-3 font-medium text-gray-900">
-                  Dependencies
-                </td>
-                <td className="border border-teal-200 px-4 py-3 align-top">
-                  <div className="flex flex-wrap gap-1">
-                    {data.assess.length > 0 ? (
-                      data.assess.map((tech, idx) => (
-                        <span key={idx} className="rounded bg-yellow-100 px-2 py-1 text-xs text-yellow-800">
-                          {tech}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400">-</span>
-                    )}
-                  </div>
-                </td>
-                <td className="border border-teal-200 px-4 py-3 align-top">
-                  <div className="flex flex-wrap gap-1">
-                    {data.trial.length > 0 ? (
-                      data.trial.map((tech, idx) => (
-                        <span key={idx} className="rounded bg-blue-100 px-2 py-1 text-xs text-blue-800">
-                          {tech}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400">-</span>
-                    )}
-                  </div>
-                </td>
-                <td className="border border-teal-200 px-4 py-3 align-top">
-                  <div className="flex flex-wrap gap-1">
-                    {data.adopt.length > 0 ? (
-                      data.adopt.map((tech, idx) => (
-                        <span key={idx} className="rounded bg-green-100 px-2 py-1 text-xs text-green-800">
-                          {tech}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400">-</span>
-                    )}
-                  </div>
-                </td>
-                <td className="border border-teal-200 px-4 py-3 align-top">
-                  <div className="flex flex-wrap gap-1">
-                    {data.hold.length > 0 ? (
-                      data.hold.map((tech, idx) => (
-                        <span key={idx} className="rounded bg-orange-100 px-2 py-1 text-xs text-orange-800">
-                          {tech}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400">-</span>
-                    )}
-                  </div>
-                </td>
-                <td className="border border-teal-200 px-4 py-3 align-top">
-                  <div className="flex flex-wrap gap-1">
-                    {data.remove.length > 0 ? (
-                      data.remove.map((tech, idx) => (
-                        <span key={idx} className="rounded bg-red-100 px-2 py-1 text-xs text-red-800">
-                          {tech}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400">-</span>
-                    )}
-                  </div>
-                </td>
-              </tr>
+              {/* Collect all unique categories */}
+              {Array.from(new Set([...adoptByCategory.keys(), ...removeByCategory.keys()])).sort().map((category) => (
+                <tr key={category} className="hover:bg-teal-50">
+                  <td className="border border-teal-200 px-4 py-3 font-medium text-gray-900">
+                    {category}
+                  </td>
+                  <td className="border border-teal-200 px-4 py-3 align-top">
+                    <span className="text-gray-400">-</span>
+                  </td>
+                  <td className="border border-teal-200 px-4 py-3 align-top">
+                    <span className="text-gray-400">-</span>
+                  </td>
+                  <td className="border border-teal-200 px-4 py-3 align-top">
+                    <div className="flex flex-wrap gap-2">
+                      {adoptByCategory.get(category)?.map((tech, idx) => (
+                        <div key={idx} className="rounded-lg border border-green-300 bg-green-50 p-2">
+                          <div className="mb-1 font-semibold text-green-900">{tech.name}</div>
+                          <div className="flex flex-wrap gap-1">
+                            {tech.dependencies.map((dep, depIdx) => (
+                              <span key={depIdx} className="rounded bg-green-200 px-1.5 py-0.5 text-xs text-green-800">
+                                {dep}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )) || <span className="text-gray-400">-</span>}
+                    </div>
+                  </td>
+                  <td className="border border-teal-200 px-4 py-3 align-top">
+                    <span className="text-gray-400">-</span>
+                  </td>
+                  <td className="border border-teal-200 px-4 py-3 align-top">
+                    <div className="flex flex-wrap gap-2">
+                      {removeByCategory.get(category)?.map((tech, idx) => (
+                        <div key={idx} className="rounded-lg border border-red-300 bg-red-50 p-2">
+                          <div className="mb-1 font-semibold text-red-900">{tech.name}</div>
+                          <div className="flex flex-wrap gap-1">
+                            {tech.dependencies.map((dep, depIdx) => (
+                              <span key={depIdx} className="rounded bg-red-200 px-1.5 py-0.5 text-xs text-red-800">
+                                {dep}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )) || <span className="text-gray-400">-</span>}
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
         
         <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
           <div>
-            <p className="font-semibold text-gray-700">Current Dependencies: {data.adopt.length}</p>
-            <p className="font-semibold text-gray-700">Removed Dependencies: {data.remove.length}</p>
+            <p className="font-semibold text-gray-700">Current Technologies: {data.adopt.length}</p>
+            <p className="font-semibold text-gray-700">Removed Technologies: {data.remove.length}</p>
           </div>
           <div className="text-right">
             <p className="text-gray-500">Branch: {data.branch || 'main'}</p>

@@ -1,4 +1,5 @@
 import { LanguageAnalyzer } from "./types";
+import { getTechnologyName } from "./data/rust";
 
 /**
  * Rust analyzer - reads Cargo.toml
@@ -7,7 +8,7 @@ export const rustAnalyzer: LanguageAnalyzer = {
   dependencyFiles: ["Cargo.toml"],
   
   extractDependencies(filePath: string, content: string): string[] {
-    const deps: string[] = [];
+    const deps = new Set<string>();
     
     try {
       // Extract dependencies from [dependencies] section
@@ -30,7 +31,8 @@ export const rustAnalyzer: LanguageAnalyzer = {
         if (inDependenciesSection && trimmed) {
           const match = trimmed.match(/^([a-zA-Z0-9_-]+)\s*=/);
           if (match) {
-            deps.push(match[1]);
+            const techName = getTechnologyName(match[1]);
+            deps.add(techName);
           }
         }
       }
@@ -38,6 +40,6 @@ export const rustAnalyzer: LanguageAnalyzer = {
       console.error(`Error parsing ${filePath}:`, error);
     }
     
-    return deps;
+    return Array.from(deps);
   }
 };

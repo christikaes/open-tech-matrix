@@ -1,4 +1,5 @@
 import { LanguageAnalyzer } from "./types";
+import { getTechnologyName } from "./data/go";
 
 /**
  * Go analyzer - reads go.mod
@@ -7,7 +8,7 @@ export const goAnalyzer: LanguageAnalyzer = {
   dependencyFiles: ["go.mod"],
   
   extractDependencies(filePath: string, content: string): string[] {
-    const deps: string[] = [];
+    const deps = new Set<string>();
     
     try {
       // Extract Go module dependencies
@@ -30,9 +31,10 @@ export const goAnalyzer: LanguageAnalyzer = {
         if (inRequireBlock || trimmed.startsWith("require ")) {
           const match = trimmed.match(/^\s*([a-zA-Z0-9._/-]+)/);
           if (match && !match[1].startsWith("//")) {
-            // Extract last part of module path as dependency name
-            const parts = match[1].split("/");
-            deps.push(parts[parts.length - 1]);
+            // Use full module path for technology mapping
+            const modulePath = match[1];
+            const techName = getTechnologyName(modulePath);
+            deps.add(techName);
           }
         }
       }
@@ -40,6 +42,6 @@ export const goAnalyzer: LanguageAnalyzer = {
       console.error(`Error parsing ${filePath}:`, error);
     }
     
-    return deps;
+    return Array.from(deps);
   }
 };

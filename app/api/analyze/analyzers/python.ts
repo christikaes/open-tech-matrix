@@ -1,4 +1,5 @@
 import { LanguageAnalyzer } from "./types";
+import { getTechnologyName } from "./data/python";
 
 /**
  * Python analyzer - reads requirements.txt, setup.py, pyproject.toml
@@ -48,6 +49,11 @@ export const pythonAnalyzer: LanguageAnalyzer = {
       console.error(`Error parsing ${filePath}:`, error);
     }
     
+    // Map to technology names
+    const technologies = deps.map(dep => getTechnologyName(dep));
+    
+    // Return unique technologies
+    return Array.from(new Set(technologies));
     return deps;
   }
 };

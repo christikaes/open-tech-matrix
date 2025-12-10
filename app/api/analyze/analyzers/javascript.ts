@@ -1,4 +1,5 @@
 import { LanguageAnalyzer } from "./types";
+import { getTechnologyName } from "./data/javascript";
 
 /**
  * JavaScript/TypeScript analyzer - reads package.json
@@ -22,7 +23,13 @@ export const jsAnalyzer: LanguageAnalyzer = {
         deps.push(...Object.keys(pkg.peerDependencies));
       }
       
-      return deps;
+      // Map to technology names and filter out nulls (@types packages)
+      const technologies = deps
+        .map(dep => getTechnologyName(dep))
+        .filter((tech): tech is string => tech !== null);
+      
+      // Return unique technologies
+      return Array.from(new Set(technologies));
     } catch (error) {
       console.error(`Error parsing ${filePath}:`, error);
       return [];
