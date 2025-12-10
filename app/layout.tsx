@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Macaroni Architecture - Modular Code Analysis",
-  description: "Code shouldn't be tangled like Spaghetti, it should be modular like Macaroni!",
+  title: "OpenTechMatrix - Technology Radar Visualization",
+  description: "Visualize and track technology adoption across your projects with an interactive tech radar matrix",
 };
 
 export default function RootLayout({
