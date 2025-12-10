@@ -1,3 +1,14 @@
+export interface FileDependency {
+  fileName: string;
+  dependencies: number;
+}
+
+export interface FileData {
+  dependencies: FileDependency[];
+  complexity: number;
+  lineCount: number;
+}
+
 export interface TechnologyItem {
   name: string; // Technology name (e.g., "React", "Spring Boot")
   category: string; // Category from category mapping (e.g., "Frontend Frameworks")
