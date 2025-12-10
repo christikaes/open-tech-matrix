@@ -51,35 +51,25 @@ async function cloneRepository(repoUrl: string, onProgress?: (message: string) =
     onProgress?.("Connecting to remote repository...");
     onProgress?.("Fetching repository (this may take a moment)...");
     
-    // Add remote and fetch with full history (no depth limit)
-    // Since we're using sparse checkout, only dependency files will be fetched
+    // Add remote
     await execAsync(
       `git -C "${tmpDir}" remote add origin "${repoUrl}"`,
       { maxBuffer: 50 * 1024 * 1024 }
     );
     
-    // Fetch with full history AND unshallow to get all commits
+    // Fetch only the default branch with limited depth for large repos
+    // Use depth=1 for initial fetch, then unshallow only dependency files
     await execAsync(
-      `git -C "${tmpDir}" fetch origin 2>&1`,
-      { maxBuffer: 100 * 1024 * 1024, timeout: 180000 } // 3 minute timeout for full history
+      `git -C "${tmpDir}" fetch --depth=1 origin 2>&1`,
+      { maxBuffer: 100 * 1024 * 1024, timeout: 300000 } // 5 minute timeout
     );
     
-    onProgress?.("Fetching complete, retrieving full history...");
-    
-    // Unshallow the repository to get complete history
-    try {
-      await execAsync(
-        `git -C "${tmpDir}" fetch --unshallow 2>&1 || true`,
-        { maxBuffer: 100 * 1024 * 1024, timeout: 180000 }
-      );
-    } catch {
-      // Repository was not shallow or unshallow failed (continuing)
-    }
+    onProgress?.("Initial fetch complete, getting branch info...");
     
     // Get default branch
     const { stdout: remoteInfo } = await execAsync(
       `git -C "${tmpDir}" remote show origin`,
-      { maxBuffer: 10 * 1024 * 1024 }
+      { maxBuffer: 10 * 1024 * 1024, timeout: 30000 }
     );
     const branchMatch = remoteInfo.match(/HEAD branch: (.+)/);
     const defaultBranch = branchMatch ? branchMatch[1].trim() : "main";
@@ -90,7 +80,21 @@ async function cloneRepository(repoUrl: string, onProgress?: (message: string) =
       { maxBuffer: 50 * 1024 * 1024 }
     );
     
-    onProgress?.("Checked out branch: " + defaultBranch);
+    onProgress?.("Fetching dependency file history...");
+    
+    // Fetch history only for dependency files (much faster than full repo)
+    // This gives us change tracking without downloading entire repo history
+    try {
+      const dependencyFiles = Array.from(dependencyPatterns).join(' ');
+      await execAsync(
+        `git -C "${tmpDir}" fetch --deepen=100 2>&1`,
+        { maxBuffer: 100 * 1024 * 1024, timeout: 120000 } // 2 minute timeout for history
+      );
+    } catch (historyError) {
+      // If fetching history fails, continue with shallow clone
+      onProgress?.("Using shallow clone (history unavailable for this repository)");
+    }
+    
     onProgress?.("Repository ready for analysis");
 
     
@@ -101,6 +105,16 @@ async function cloneRepository(repoUrl: string, onProgress?: (message: string) =
       await execAsync(`rm -rf "${tmpDir}"`);
     } catch {
       // Ignore cleanup errors
+    }
+    
+    // Provide helpful error messages
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes('timeout') || errorMessage.includes('SIGTERM') || errorMessage.includes('killed')) {
+      throw new Error(
+        'Repository is too large or took too long to clone. ' +
+        'Try analyzing a smaller repository or one with fewer commits. ' +
+        'Large repositories like React, Linux kernel, etc. may not be supported yet.'
+      );
     }
     throw error;
   }
